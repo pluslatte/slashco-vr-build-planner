@@ -14,12 +14,12 @@ const App = () => {
   const maxPp = Math.min(Math.floor(level / 2), 15);
   return (
     <Container maxW="4xl">
-      <Box p={4}>
+      <Box px={8} pt={4}>
         <Heading>SlashCo VR Build Planner</Heading>
       </Box>
-      <Grid templateColumns="repeat(2, 0fr)" gap={6}>
+      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         <GridItem colSpan={1}>
-          <Box p={4}>
+          <Box p={8}>
             <PerkList
               selectedKeys={selectedKeys}
               onTogglePerk={onTogglePerk}
