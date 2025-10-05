@@ -4,7 +4,7 @@ import PpGauge from "./components/PpGauge";
 import { PerkKey, type Perk } from "./lib/perks";
 import { PERKS } from "./lib/perkData";
 
-function App() {
+const App = () => {
   const selectedPerks: Array<Perk> = [
     PERKS[PerkKey.ADRENALINE_RUSH],
     PERKS[PerkKey.LIGHTFOOT],
@@ -36,6 +36,6 @@ function App() {
       </Grid>
     </Container>
   )
-}
+};
 
-export default App
+export default App;
