@@ -1,18 +1,17 @@
 import { Avatar, AvatarGroup } from "@chakra-ui/react";
 
-interface PerkProps {
-  imageSrcUrl: string;
+interface Props {
+  imgUrl: string
 };
-
-const Perk = (props: PerkProps) => {
+const PerkIcon = (props: Props) => {
   return (
     <AvatarGroup>
       <Avatar.Root shape="square" size="xl">
         <Avatar.Fallback>X</Avatar.Fallback>
-        <Avatar.Image src={props.imageSrcUrl} />
+        <Avatar.Image src={props.imgUrl} />
       </Avatar.Root>
     </AvatarGroup>
   );
 };
 
-export default Perk;
+export default PerkIcon;
