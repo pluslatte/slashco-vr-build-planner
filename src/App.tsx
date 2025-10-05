@@ -1,4 +1,4 @@
-import { Box, Container, Field, Flex, Grid, GridItem, Group, Heading, NumberInput, Text } from "@chakra-ui/react"
+import { Box, Container, Field, Grid, GridItem, Heading, NumberInput } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
 import { PERKS } from "./lib/perkData";
