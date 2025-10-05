@@ -1,10 +1,10 @@
 import { PERKS } from "@/lib/perkData";
 import { PerkKey } from "@/lib/perks";
-import { Grid } from "@chakra-ui/react";
+import { Grid, Text } from "@chakra-ui/react";
 import PerkEntry from "./PerkEntry/PerkEntry";
 
 const PerkList = () => (
-  <Grid templateColumns="repeat(5, 1fr)" gap="6">
+  <Grid templateColumns="repeat(5, 0fr)" gap="6">
     <PerkEntry perk={PERKS[PerkKey.MECHANIC]} />
     <PerkEntry perk={PERKS[PerkKey.HEALTHY]} />
     <PerkEntry perk={PERKS[PerkKey.ADRENALINE_RUSH]} />
