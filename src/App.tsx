@@ -1,7 +1,12 @@
-import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
+import { Box, Container, Grid, GridItem, Progress, Text } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
+import { useState } from "react";
+import PpGauge from "./components/PpGauge";
 
 function App() {
+  const [level, setLevel] = useState(30);
+  const [ppUsed, setPpUsed] = useState(14);
+  const maxPp = Math.min(Math.floor(level / 2), 15);
   return (
     <Container maxW="4xl">
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
@@ -12,6 +17,10 @@ function App() {
         </GridItem>
         <GridItem colSpan={1}>
           <Text>Item Section</Text>
+        </GridItem>
+        <GridItem colSpan={2}>
+          <Text>Level: {level}</Text>
+          <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
         </GridItem>
         <GridItem colSpan={2}>
           <Text>Details</Text>
