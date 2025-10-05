@@ -1,4 +1,4 @@
-import { Box, Container, Field, Grid, GridItem, Group, NumberInput, Text } from "@chakra-ui/react"
+import { Box, Container, Field, Flex, Grid, GridItem, Group, Heading, NumberInput, Text } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
 import { PERKS } from "./lib/perkData";
@@ -14,13 +14,41 @@ const App = () => {
   const maxPp = Math.min(Math.floor(level / 2), 15);
   return (
     <Container maxW="4xl">
-      <Grid templateColumns="repeat(2, 1fr)" gap={6}>
+      <Box p={4}>
+        <Heading>SlashCo VR Build Planner</Heading>
+      </Box>
+      <Grid templateColumns="repeat(2, 0fr)" gap={6}>
         <GridItem colSpan={1}>
           <Box p={4}>
             <PerkList
               selectedKeys={selectedKeys}
               onTogglePerk={onTogglePerk}
             />
+            <Box h={4} />
+            <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
+            <Box h={4} />
+            <Field.Root>
+              <Field.Label>Level</Field.Label>
+              <NumberInput.Root
+                value={level.toString()}
+                width="100px"
+                min={0}
+                max={100}
+                onValueChange={(e) => {
+                  const num = parseInt(e.value);
+                  if (!isNaN(num)) {
+                    setLevel(num)
+                  } else {
+                    setLevel(0)
+                  }
+                }}
+              >
+                <NumberInput.Label />
+                <NumberInput.Control />
+                <NumberInput.Input />
+              </NumberInput.Root>
+              <Field.HelperText>Max PP: {maxPp}</Field.HelperText>
+            </Field.Root>
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
@@ -29,31 +57,6 @@ const App = () => {
           </Box>
         </GridItem>
       </Grid>
-      <Group grow p={4}>
-        <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
-        <Field.Root>
-          <Field.Label>Level</Field.Label>
-          <NumberInput.Root
-            value={level.toString()}
-            width="200px"
-            min={0}
-            max={100}
-            onValueChange={(e) => {
-              const num = parseInt(e.value);
-              if (!isNaN(num)) {
-                setLevel(num)
-              } else {
-                setLevel(0)
-              }
-            }}
-          >
-            <NumberInput.Label />
-            <NumberInput.Control />
-            <NumberInput.Input />
-          </NumberInput.Root>
-          <Field.HelperText>Max PP: {maxPp}</Field.HelperText>
-        </Field.Root>
-      </Group>
     </Container >
   )
 };
