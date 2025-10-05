@@ -1,6 +1,6 @@
 import { Container } from "@chakra-ui/react"
 import Perk from "@/components/Perk"
-import { PERKS } from "@/lib/perks"
+import { PERKS } from "@/lib/perkData"
 
 function App() {
   return (

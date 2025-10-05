@@ -1,12 +1,8 @@
-import type { Perk } from "./perks";
+import type { Perk, PerkKey } from "./perks";
 
-export const perkData: Array<Perk> = [
-  {
-    key: "MECHANIC",
-    name: {
-      en: "Mechanic I",
-      ja: "メカニック I",
-    },
+export const PERKS: Record<PerkKey, Perk> = {
+  MECHANIC: {
+    name: { en: "Mechanic I", ja: "メカニック I" },
     description: {
       en: "Slightly increases repair speed for machinery and objectives. (Placeholder text)",
       ja: "機械や目的の修理速度がわずかに上昇します。（仮テキスト）",
@@ -16,12 +12,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
-  {
-    key: "HEALTHY",
-    name: {
-      en: "Healthy I",
-      ja: "ヘルシー I",
-    },
+  HEALTHY: {
+    name: { en: "Healthy I", ja: "ヘルシー I" },
     description: {
       en: "Grants a small increase to maximum health. (Placeholder text)",
       ja: "最大体力が少し増加します。（仮テキスト）",
@@ -31,12 +23,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
-  {
-    key: "ADRENALINE_RUSH",
-    name: {
-      en: "Adrenaline Rush",
-      ja: "アドレナリンラッシュ",
-    },
+  ADRENALINE_RUSH: {
+    name: { en: "Adrenaline Rush", ja: "アドレナリンラッシュ" },
     description: {
       en: "Temporarily boosts movement after escaping danger. (Placeholder text)",
       ja: "危機を脱した後、一時的に移動速度が上昇します。（仮テキスト）",
@@ -46,12 +34,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
-  {
-    key: "HYPERPERCEPTIVE",
-    name: {
-      en: "Hyperperceptive",
-      ja: "ハイパー知覚",
-    },
+  HYPERPERCEPTIVE: {
+    name: { en: "Hyperperceptive", ja: "ハイパー知覚" },
     description: {
       en: "Improves detection of nearby threats or items. (Placeholder text)",
       ja: "近くの脅威やアイテムを感知しやすくなります。（仮テキスト）",
@@ -61,12 +45,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
-  {
-    key: "UNCLE_SINK",
-    name: {
-      en: "Uncle Sink",
-      ja: "アンクル・シンク",
-    },
+  UNCLE_SINK: {
+    name: { en: "Uncle Sink", ja: "アンクル・シンク" },
     description: {
       en: "Reduces stamina drain from actions. (Placeholder text)",
       ja: "行動によるスタミナ消費を軽減します。（仮テキスト）",
@@ -76,12 +56,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
-  {
-    key: "MECHANIC_2",
-    name: {
-      en: "Mechanic II",
-      ja: "メカニック II",
-    },
+  MECHANIC_2: {
+    name: { en: "Mechanic II", ja: "メカニック II" },
     description: {
       en: "Further increases repair speed. (Placeholder text)",
       ja: "修理速度がさらに上昇します。（仮テキスト）",
@@ -91,12 +67,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
-  {
-    key: "BOUNTY_HUNTER",
-    name: {
-      en: "Bounty Hunter",
-      ja: "バウンティーハンター",
-    },
+  BOUNTY_HUNTER: {
+    name: { en: "Bounty Hunter", ja: "バウンティーハンター" },
     description: {
       en: "Gain extra rewards from completed objectives. (Placeholder text)",
       ja: "目的達成時の報酬が増加します。（仮テキスト）",
@@ -106,12 +78,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
-  {
-    key: "CLOSE_ENCOUNTER",
-    name: {
-      en: "Close Encounter",
-      ja: "クロースエンカウンター",
-    },
+  CLOSE_ENCOUNTER: {
+    name: { en: "Close Encounter", ja: "クロースエンカウンター" },
     description: {
       en: "Minor defense boost when near an enemy. (Placeholder text)",
       ja: "敵が近いとき防御が少し上昇します。（仮テキスト）",
@@ -121,12 +89,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
-  {
-    key: "SPEED_ADDICT",
-    name: {
-      en: "Speed Addict",
-      ja: "スピード中毒",
-    },
+  SPEED_ADDICT: {
+    name: { en: "Speed Addict", ja: "スピード中毒" },
     description: {
       en: "Small passive movement speed increase. (Placeholder text)",
       ja: "移動速度がわずかに上昇します。（仮テキスト）",
@@ -136,12 +100,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
-  {
-    key: "SHADOWBORN",
-    name: {
-      en: "Shadowborn",
-      ja: "シャドウボーン",
-    },
+  SHADOWBORN: {
+    name: { en: "Shadowborn", ja: "シャドウボーン" },
     description: {
       en: "Improves vision or awareness in low light. (Placeholder text)",
       ja: "暗所での視認性／感知能力が向上します。（仮テキスト）",
@@ -151,12 +111,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
-  {
-    key: "MERCHANT",
-    name: {
-      en: "Merchant",
-      ja: "マーCHANT",
-    },
+  MERCHANT: {
+    name: { en: "Merchant", ja: "マーCHANT" },
     description: {
       en: "Reduces shop or trade costs. (Placeholder text)",
       ja: "ショップ／取引コストを軽減します。（仮テキスト）",
@@ -166,12 +122,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
-  {
-    key: "LIGHTFOOT",
-    name: {
-      en: "Lightfoot I",
-      ja: "ライトフット I",
-    },
+  LIGHTFOOT: {
+    name: { en: "Lightfoot I", ja: "ライトフット I" },
     description: {
       en: "Reduces noise made while moving. (Placeholder text)",
       ja: "移動時の騒音を軽減します。（仮テキスト）",
@@ -181,12 +133,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
-  {
-    key: "HEALTHY_2",
-    name: {
-      en: "Healthy II",
-      ja: "ヘルシー II",
-    },
+  HEALTHY_2: {
+    name: { en: "Healthy II", ja: "ヘルシー II" },
     description: {
       en: "Further increases maximum health. (Placeholder text)",
       ja: "最大体力がさらに増加します。（仮テキスト）",
@@ -196,12 +144,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
-  {
-    key: "HEAVY",
-    name: {
-      en: "Heavy",
-      ja: "ヘビー",
-    },
+  HEAVY: {
+    name: { en: "Heavy", ja: "ヘビー" },
     description: {
       en: "Gain resistance to knockback or stagger. (Placeholder text)",
       ja: "のけぞりや吹き飛びに耐性を得ます。（仮テキスト）",
@@ -211,12 +155,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
-  {
-    key: "MCNALLY_HANDS",
-    name: {
-      en: "McNally Hands",
-      ja: "マクナリー・ハンズ",
-    },
+  MCNALLY_HANDS: {
+    name: { en: "McNally Hands", ja: "マクナリー・ハンズ" },
     description: {
       en: "Interact actions complete slightly faster. (Placeholder text)",
       ja: "インタラクト行動が少し速く完了します。（仮テキスト）",
@@ -226,12 +166,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
-  {
-    key: "MECHANIC_3",
-    name: {
-      en: "Mechanic III",
-      ja: "メカニック III",
-    },
+  MECHANIC_3: {
+    name: { en: "Mechanic III", ja: "メカニック III" },
     description: {
       en: "Greatly increases repair speed. (Placeholder text)",
       ja: "修理速度が大幅に上昇します。（仮テキスト）",
@@ -241,12 +177,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
-  {
-    key: "LIGHTFOOT_2",
-    name: {
-      en: "Lightfoot II",
-      ja: "ライトフット II",
-    },
+  LIGHTFOOT_2: {
+    name: { en: "Lightfoot II", ja: "ライトフット II" },
     description: {
       en: "Further reduces movement noise. (Placeholder text)",
       ja: "移動時の騒音をさらに軽減します。（仮テキスト）",
@@ -256,12 +188,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
-  {
-    key: "BATTER_UP",
-    name: {
-      en: "Batter Up",
-      ja: "バッターアップ",
-    },
+  BATTER_UP: {
+    name: { en: "Batter Up", ja: "バッターアップ" },
     description: {
       en: "Increases melee swing efficiency. (Placeholder text)",
       ja: "近接攻撃の効率が上昇します。（仮テキスト）",
@@ -271,12 +199,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
-  {
-    key: "GLUTTON",
-    name: {
-      en: "Glutton",
-      ja: "グラットン",
-    },
+  GLUTTON: {
+    name: { en: "Glutton", ja: "グラットン" },
     description: {
       en: "Consume healing items faster. (Placeholder text)",
       ja: "回復アイテムの使用が速くなります。（仮テキスト）",
@@ -286,12 +210,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
-  {
-    key: "ACCOUNTANT",
-    name: {
-      en: "Accountant",
-      ja: "アカウンタント",
-    },
+  ACCOUNTANT: {
+    name: { en: "Accountant", ja: "アカウンタント" },
     description: {
       en: "Gain small bonus resources over time. (Placeholder text)",
       ja: "時間経過で資源ボーナスを少量獲得します。（仮テキスト）",
@@ -301,12 +221,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
-  {
-    key: "STEALTH_CAMO",
-    name: {
-      en: "Stealth Camo",
-      ja: "ステルスカモ",
-    },
+  STEALTH_CAMO: {
+    name: { en: "Stealth Camo", ja: "ステルスカモ" },
     description: {
       en: "Harder to detect while stationary. (Placeholder text)",
       ja: "静止時に発見されにくくなります。（仮テキスト）",
@@ -316,12 +232,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
-  {
-    key: "RABBIT_FEET",
-    name: {
-      en: "Rabbit Feet",
-      ja: "ラビットフィート",
-    },
+  RABBIT_FEET: {
+    name: { en: "Rabbit Feet", ja: "ラビットフィート" },
     description: {
       en: "Improves jump or evasive maneuvers. (Placeholder text)",
       ja: "ジャンプ／回避性能が向上します。（仮テキスト）",
@@ -331,12 +243,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
-  {
-    key: "ATHLETE",
-    name: {
-      en: "Athlete",
-      ja: "アスリート",
-    },
+  ATHLETE: {
+    name: { en: "Athlete", ja: "アスリート" },
     description: {
       en: "Increases stamina regeneration rate. (Placeholder text)",
       ja: "スタミナ回復速度が上昇します。（仮テキスト）",
@@ -346,12 +254,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
-  {
-    key: "EXTERMINATOR_FLASHLIGHT",
-    name: {
-      en: "Exterminator (Flashlight)",
-      ja: "エクスターミネーター（ライト）",
-    },
+  EXTERMINATOR_FLASHLIGHT: {
+    name: { en: "Exterminator (Flashlight)", ja: "エクスターミネーター（ライト）" },
     description: {
       en: "Enhanced flashlight effectiveness. (Placeholder text)",
       ja: "フラッシュライト効果が強化されます。（仮テキスト）",
@@ -361,12 +265,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
-  {
-    key: "ALIVE_HARD",
-    name: {
-      en: "Alive Hard",
-      ja: "アライブ・ハード",
-    },
+  ALIVE_HARD: {
+    name: { en: "Alive Hard", ja: "アライブ・ハード" },
     description: {
       en: "Survive lethal damage once per match. (Placeholder text)",
       ja: "致死ダメージを一度だけ耐えます。（仮テキスト）",
@@ -376,12 +276,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
-  {
-    key: "GROUCH_BEHAVIOR",
-    name: {
-      en: "Grouch Behavior",
-      ja: "グラウチ行動",
-    },
+  GROUCH_BEHAVIOR: {
+    name: { en: "Grouch Behavior", ja: "グラウチ行動" },
     description: {
       en: "Buffs while low morale or health. (Placeholder text)",
       ja: "士気または体力低下時に強化を得ます。（仮テキスト）",
@@ -391,12 +287,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
-  {
-    key: "EXTREMELY_BUFF",
-    name: {
-      en: "Extremely Buff",
-      ja: "エクストリームバフ",
-    },
+  EXTREMELY_BUFF: {
+    name: { en: "Extremely Buff", ja: "エクストリームバフ" },
     description: {
       en: "Greatly increases physical power. (Placeholder text)",
       ja: "物理的な力を大幅に上昇させます。（仮テキスト）",
@@ -406,12 +298,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
-  {
-    key: "BALKAN_WARRIOR",
-    name: {
-      en: "Balkan Warrior",
-      ja: "バルカンウォリアー",
-    },
+  BALKAN_WARRIOR: {
+    name: { en: "Balkan Warrior", ja: "バルカンウォリアー" },
     description: {
       en: "Improved resilience and intimidation. (Placeholder text)",
       ja: "耐久力と威圧効果が向上します。（仮テキスト）",
@@ -421,12 +309,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
-  {
-    key: "LEAD_BELLY",
-    name: {
-      en: "Lead Belly",
-      ja: "レッドベリー",
-    },
+  LEAD_BELLY: {
+    name: { en: "Lead Belly", ja: "レッドベリー" },
     description: {
       en: "Reduces damage from certain sources. (Placeholder text)",
       ja: "特定のダメージを軽減します。（仮テキスト）",
@@ -436,12 +320,8 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
-  {
-    key: "SOLID_JOHN",
-    name: {
-      en: "Solid John",
-      ja: "ソリッド・ジョン",
-    },
+  SOLID_JOHN: {
+    name: { en: "Solid John", ja: "ソリッド・ジョン" },
     description: {
       en: "Balanced all-round minor boosts. (Placeholder text)",
       ja: "全体的に小さな万能強化を得ます。（仮テキスト）",
@@ -451,4 +331,4 @@ export const perkData: Array<Perk> = [
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
-] as const;
+} as const;

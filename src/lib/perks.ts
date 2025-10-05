@@ -1,14 +1,9 @@
-import { perkData } from "./perkData";
-
-export type PerkKey = typeof PERK_KEYS[number];
-
 export type LocalizedText = {
   ja: string;
   en: string;
 };
 
 export interface Perk {
-  key: PerkKey;
   name: LocalizedText;
   description: LocalizedText;
   iconUrl: string;
@@ -49,9 +44,7 @@ export const PERK_KEYS: Array<string> = [
   "LEAD_BELLY",
   "SOLID_JOHN"
 ] as const;
+export type PerkKey = typeof PERK_KEYS[number];
 
-export const PERKS: Record<PerkKey, Perk> = Object.fromEntries(
-  perkData.map(p => [p.key, p])
-) as Record<PerkKey, Perk>;
 
 export type Locale = 'ja' | 'en';
