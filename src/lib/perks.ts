@@ -5,7 +5,8 @@ export type LocalizedText = {
 
 export interface Perk {
   name: LocalizedText;
-  description: LocalizedText;
+  effectsPositive: Array<LocalizedText>;
+  effectsNegative: Array<LocalizedText>;
   iconUrl: string;
   pp: number;
   creditsToUnlock: number;

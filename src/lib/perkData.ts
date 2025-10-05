@@ -2,330 +2,366 @@ import type { Perk, PerkKey } from "./perks";
 
 export const PERKS: Record<PerkKey, Perk> = {
   MECHANIC: {
-    name: { en: "Mechanic I", ja: "メカニック I" },
-    description: {
-      en: "Slightly increases repair speed for machinery and objectives. (Placeholder text)",
-      ja: "機械や目的の修理速度がわずかに上昇します。（仮テキスト）",
-    },
+    name: { en: "Mechanic I", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      {
+        en: "Fueling speed is increased by 50%.",
+        ja: "Fueling speed is increased by 50%."
+      }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_mech1.png",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
   HEALTHY: {
-    name: { en: "Healthy I", ja: "ヘルシー I" },
-    description: {
-      en: "Grants a small increase to maximum health. (Placeholder text)",
-      ja: "最大体力が少し増加します。（仮テキスト）",
-    },
+    name: { en: "Healthy I", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Consumable items heal 50% more.", ja: "Consumable items heal 50% more." },
+      { en: "You can consume Costco Frozen Pizza for slight healing.", ja: "You can consume Costco Frozen Pizza for slight healing." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_healthy1.png",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
   ADRENALINE_RUSH: {
-    name: { en: "Adrenaline Rush", ja: "アドレナリンラッシュ" },
-    description: {
-      en: "Temporarily boosts movement after escaping danger. (Placeholder text)",
-      ja: "危機を脱した後、一時的に移動速度が上昇します。（仮テキスト）",
-    },
+    name: { en: "Adrenaline Rush", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "When the helicopter arrives, minor healing and a brief speed boost will be applied.", ja: "When the helicopter arrives, minor healing and a brief speed boost will be applied." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_adr.png",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
   HYPERPERCEPTIVE: {
-    name: { en: "Hyperperceptive", ja: "ハイパー知覚" },
-    description: {
-      en: "Improves detection of nearby threats or items. (Placeholder text)",
-      ja: "近くの脅威やアイテムを感知しやすくなります。（仮テキスト）",
-    },
+    name: { en: "Hyperperceptive", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The footsteps of Slashers are louder to you.", ja: "The footsteps of Slashers are louder to you." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_hyper.png",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
   UNCLE_SINK: {
-    name: { en: "Uncle Sink", ja: "アンクル・シンク" },
-    description: {
-      en: "Reduces stamina drain from actions. (Placeholder text)",
-      ja: "行動によるスタミナ消費を軽減します。（仮テキスト）",
-    },
+    name: { en: "Uncle Sink", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "You can consume Glass Bottles for slight healing.", ja: "You can consume Glass Bottles for slight healing." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_uncle.png",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
   MECHANIC_2: {
-    name: { en: "Mechanic II", ja: "メカニック II" },
-    description: {
-      en: "Further increases repair speed. (Placeholder text)",
-      ja: "修理速度がさらに上昇します。（仮テキスト）",
-    },
+    name: { en: "Mechanic II", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The difficulty of Battery Insertion is decreased.", ja: "The difficulty of Battery Insertion is decreased." },
+      { en: "Failing Battery Insertion does not hurt you.", ja: "Failing Battery Insertion does not hurt you." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_mech2.png",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
   BOUNTY_HUNTER: {
-    name: { en: "Bounty Hunter", ja: "バウンティーハンター" },
-    description: {
-      en: "Gain extra rewards from completed objectives. (Placeholder text)",
-      ja: "目的達成時の報酬が増加します。（仮テキスト）",
-    },
+    name: { en: "Bounty Hunter", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "All items related to Informal Assignments will faintly glow.", ja: "All items related to Informal Assignments will faintly glow." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_treasure.png",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
   CLOSE_ENCOUNTER: {
-    name: { en: "Close Encounter", ja: "クロースエンカウンター" },
-    description: {
-      en: "Minor defense boost when near an enemy. (Placeholder text)",
-      ja: "敵が近いとき防御が少し上昇します。（仮テキスト）",
-    },
+    name: { en: "Close Encounter", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Your movement speed is slightly increased the lower your health is.", ja: "Your movement speed is slightly increased the lower your health is." }
+    ],
+    effectsNegative: [
+      { en: "Heavy items will slow you down more drastically the lower your health is.", ja: "Heavy items will slow you down more drastically the lower your health is." }
+    ],
     iconUrl: "perk_encounter.png",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
   SPEED_ADDICT: {
-    name: { en: "Speed Addict", ja: "スピード中毒" },
-    description: {
-      en: "Small passive movement speed increase. (Placeholder text)",
-      ja: "移動速度がわずかに上昇します。（仮テキスト）",
-    },
+    name: { en: "Speed Addict", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "You will no longer be affected by effects which slow down your movement speed.", ja: "You will no longer be affected by effects which slow down your movement speed." }
+    ],
+    effectsNegative: [
+      { en: "Effects which increase your movement speed will deplete 25% faster.", ja: "Effects which increase your movement speed will deplete 25% faster." }
+    ],
     iconUrl: "perk_addict.png",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
   SHADOWBORN: {
-    name: { en: "Shadowborn", ja: "シャドウボーン" },
-    description: {
-      en: "Improves vision or awareness in low light. (Placeholder text)",
-      ja: "暗所での視認性／感知能力が向上します。（仮テキスト）",
-    },
+    name: { en: "Shadowborn", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Increase the ability to see in the dark.", ja: "Increase the ability to see in the dark." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_shadow.png",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
   MERCHANT: {
-    name: { en: "Merchant", ja: "マーCHANT" },
-    description: {
-      en: "Reduces shop or trade costs. (Placeholder text)",
-      ja: "ショップ／取引コストを軽減します。（仮テキスト）",
-    },
+    name: { en: "Merchant", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Increase Item Buyback rate to 50%.", ja: "Increase Item Buyback rate to 50%." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_merchant.png",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
   LIGHTFOOT: {
-    name: { en: "Lightfoot I", ja: "ライトフット I" },
-    description: {
-      en: "Reduces noise made while moving. (Placeholder text)",
-      ja: "移動時の騒音を軽減します。（仮テキスト）",
-    },
+    name: { en: "Lightfoot I", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The loudness of your footsteps is reduced 50%.", ja: "The loudness of your footsteps is reduced 50%." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_lightfoot.png",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
   HEALTHY_2: {
-    name: { en: "Healthy II", ja: "ヘルシー II" },
-    description: {
-      en: "Further increases maximum health. (Placeholder text)",
-      ja: "最大体力がさらに増加します。（仮テキスト）",
-    },
+    name: { en: "Healthy II", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Consumable items heal 50% more.", ja: "Consumable items heal 50% more." },
+      { en: "Receive slow health regeneration when under 50% health.", ja: "Receive slow health regeneration when under 50% health." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_healthy2.png",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
   HEAVY: {
-    name: { en: "Heavy", ja: "ヘビー" },
-    description: {
-      en: "Gain resistance to knockback or stagger. (Placeholder text)",
-      ja: "のけぞりや吹き飛びに耐性を得ます。（仮テキスト）",
-    },
+    name: { en: "Heavy", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Your maximum health is slightly increased.", ja: "Your maximum health is slightly increased." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_heavy.png",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
   MCNALLY_HANDS: {
-    name: { en: "McNally Hands", ja: "マクナリー・ハンズ" },
-    description: {
-      en: "Interact actions complete slightly faster. (Placeholder text)",
-      ja: "インタラクト行動が少し速く完了します。（仮テキスト）",
-    },
+    name: { en: "McNally Hands", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The Master Lock 607 will have a lower chance of breaking when used.", ja: "The Master Lock 607 will have a lower chance of breaking when used." },
+      { en: "Gain a small CREDIT and EXP reward when successfully opening a locked door.", ja: "Gain a small CREDIT and EXP reward when successfully opening a locked door." }
+    ],
+    effectsNegative: [
+      { en: "Credits gained from Objectives are slightly reduced.", ja: "Credits gained from Objectives are slightly reduced." }
+    ],
     iconUrl: "perk_mcnallyhands.png",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
   },
   MECHANIC_3: {
-    name: { en: "Mechanic III", ja: "メカニック III" },
-    description: {
-      en: "Greatly increases repair speed. (Placeholder text)",
-      ja: "修理速度が大幅に上昇します。（仮テキスト）",
-    },
+    name: { en: "Mechanic III", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Pouring Fuel after the Battery has been inserted will not cause a fail-start.", ja: "Pouring Fuel after the Battery has been inserted will not cause a fail-start." },
+      { en: "Failing Fuel Pouring does not create a loud noise.", ja: "Failing Fuel Pouring does not create a loud noise." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_mech3.png",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
   LIGHTFOOT_2: {
-    name: { en: "Lightfoot II", ja: "ライトフット II" },
-    description: {
-      en: "Further reduces movement noise. (Placeholder text)",
-      ja: "移動時の騒音をさらに軽減します。（仮テキスト）",
-    },
+    name: { en: "Lightfoot II", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Entering and exiting Lockers is completely silent.", ja: "Entering and exiting Lockers is completely silent." },
+      { en: "The loudness of your footsteps is reduced 50%.", ja: "The loudness of your footsteps is reduced 50%." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_lightfoot2.png",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
   BATTER_UP: {
-    name: { en: "Batter Up", ja: "バッターアップ" },
-    description: {
-      en: "Increases melee swing efficiency. (Placeholder text)",
-      ja: "近接攻撃の効率が上昇します。（仮テキスト）",
-    },
+    name: { en: "Batter Up", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Gain a brief speed boost when blinding a Slasher.", ja: "Gain a brief speed boost when blinding a Slasher." },
+      { en: "Blinding Slashers will reward you with a CREDIT and EXP bonus.", ja: "Blinding Slashers will reward you with a CREDIT and EXP bonus." }
+    ],
+    effectsNegative: [
+      { en: "Increases the difficulty of Fuel Pouring and Battery Insertion.", ja: "Increases the difficulty of Fuel Pouring and Battery Insertion." }
+    ],
     iconUrl: "perk_batterup.png",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
   GLUTTON: {
-    name: { en: "Glutton", ja: "グラットン" },
-    description: {
-      en: "Consume healing items faster. (Placeholder text)",
-      ja: "回復アイテムの使用が速くなります。（仮テキスト）",
-    },
+    name: { en: "Glutton", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "All consumable item effects deplete 50% slower.", ja: "All consumable item effects deplete 50% slower." }
+    ],
+    effectsNegative: [
+      { en: "Consumable items heal 50% less.", ja: "Consumable items heal 50% less." }
+    ],
     iconUrl: "perk_glutton.png",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
   ACCOUNTANT: {
-    name: { en: "Accountant", ja: "アカウンタント" },
-    description: {
-      en: "Gain small bonus resources over time. (Placeholder text)",
-      ja: "時間経過で資源ボーナスを少量獲得します。（仮テキスト）",
-    },
+    name: { en: "Accountant", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Gain the ability to hear faint sounds coming from Documents.", ja: "Gain the ability to hear faint sounds coming from Documents." },
+      { en: "Collecting Documents will award you with double CREDITS and EXP.", ja: "Collecting Documents will award you with double CREDITS and EXP." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_account.png",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
   },
   STEALTH_CAMO: {
-    name: { en: "Stealth Camo", ja: "ステルスカモ" },
-    description: {
-      en: "Harder to detect while stationary. (Placeholder text)",
-      ja: "静止時に発見されにくくなります。（仮テキスト）",
-    },
+    name: { en: "Stealth Camo", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Slashers cannot spot you as easily.", ja: "Slashers cannot spot you as easily." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_stealth.png",
     pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
   RABBIT_FEET: {
-    name: { en: "Rabbit Feet", ja: "ラビットフィート" },
-    description: {
-      en: "Improves jump or evasive maneuvers. (Placeholder text)",
-      ja: "ジャンプ／回避性能が向上します。（仮テキスト）",
-    },
+    name: { en: "Rabbit Feet", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The first Bear Trap you would trigger gets immediately disarmed.", ja: "The first Bear Trap you would trigger gets immediately disarmed." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_rabbit.png",
     pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
   ATHLETE: {
-    name: { en: "Athlete", ja: "アスリート" },
-    description: {
-      en: "Increases stamina regeneration rate. (Placeholder text)",
-      ja: "スタミナ回復速度が上昇します。（仮テキスト）",
-    },
+    name: { en: "Athlete", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Increases overall movement speed for the first 8 minutes of the round.", ja: "Increases overall movement speed for the first 8 minutes of the round." }
+    ],
+    effectsNegative: [
+      { en: "Heavy items will slow you down more.", ja: "Heavy items will slow you down more." }
+    ],
     iconUrl: "perk_athlete.png",
     pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
   EXTERMINATOR_FLASHLIGHT: {
-    name: { en: "Exterminator (Flashlight)", ja: "エクスターミネーター（ライト）" },
-    description: {
-      en: "Enhanced flashlight effectiveness. (Placeholder text)",
-      ja: "フラッシュライト効果が強化されます。（仮テキスト）",
-    },
+    name: { en: "Exterminator (Flashlight)", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Flashlight range is doubled.", ja: "Flashlight range is doubled." },
+      { en: "Flashlight toggling will not be heard by Slashers.", ja: "Flashlight toggling will not be heard by Slashers." }
+    ],
+    effectsNegative: [
+      { en: "Flashlight beam is narrowed by 50%.", ja: "Flashlight beam is narrowed by 50%." }
+    ],
     iconUrl: "perk_flashlight.png",
     pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
   ALIVE_HARD: {
-    name: { en: "Alive Hard", ja: "アライブ・ハード" },
-    description: {
-      en: "Survive lethal damage once per match. (Placeholder text)",
-      ja: "致死ダメージを一度だけ耐えます。（仮テキスト）",
-    },
+    name: { en: "Alive Hard", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Gain the ability to survive certain death only once.", ja: "Gain the ability to survive certain death only once." }
+    ],
+    effectsNegative: [
+      { en: "All healing is drastically reduced.", ja: "All healing is drastically reduced." },
+      { en: "The ability is inactive once the helicopter is set to arrive.", ja: "The ability is inactive once the helicopter is set to arrive." }
+    ],
     iconUrl: "perk_alive.png",
     pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
   GROUCH_BEHAVIOR: {
-    name: { en: "Grouch Behavior", ja: "グラウチ行動" },
-    description: {
-      en: "Buffs while low morale or health. (Placeholder text)",
-      ja: "士気または体力低下時に強化を得ます。（仮テキスト）",
-    },
+    name: { en: "Grouch Behavior", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "While hiding in a locker, you gain small passive health regeneration.", ja: "While hiding in a locker, you gain small passive health regeneration." },
+      { en: "Every 4 minutes you can take a sip of Fuel for a short boost to overall movement speed.", ja: "Every 4 minutes you can take a sip of Fuel for a short boost to overall movement speed." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_itsmyturntoplayxbox.png",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
   EXTREMELY_BUFF: {
-    name: { en: "Extremely Buff", ja: "エクストリームバフ" },
-    description: {
-      en: "Greatly increases physical power. (Placeholder text)",
-      ja: "物理的な力を大幅に上昇させます。（仮テキスト）",
-    },
+    name: { en: "Extremely Buff", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "Carrying heavy items no longer slows you down.", ja: "Carrying heavy items no longer slows you down." }
+    ],
+    effectsNegative: [
+      { en: "All incoming damage is increased by 50%.", ja: "All incoming damage is increased by 50%." }
+    ],
     iconUrl: "perk_zyzz.png",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
   BALKAN_WARRIOR: {
-    name: { en: "Balkan Warrior", ja: "バルカンウォリアー" },
-    description: {
-      en: "Improved resilience and intimidation. (Placeholder text)",
-      ja: "耐久力と威圧効果が向上します。（仮テキスト）",
-    },
+    name: { en: "Balkan Warrior", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The after-effect of Balkan Boost no longer cripples you.", ja: "The after-effect of Balkan Boost no longer cripples you." }
+    ],
+    effectsNegative: [
+      { en: "The Fueling Speed bonus of Balkan Boost is decreased.", ja: "The Fueling Speed bonus of Balkan Boost is decreased." }
+    ],
     iconUrl: "perk_balkan.png",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
   LEAD_BELLY: {
-    name: { en: "Lead Belly", ja: "レッドベリー" },
-    description: {
-      en: "Reduces damage from certain sources. (Placeholder text)",
-      ja: "特定のダメージを軽減します。（仮テキスト）",
-    },
+    name: { en: "Lead Belly", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "All incoming damage is reduced by 50%.", ja: "All incoming damage is reduced by 50%." }
+    ],
+    effectsNegative: [
+      { en: "The loudness of your footsteps is increased by 50%.", ja: "The loudness of your footsteps is increased by 50%." }
+    ],
     iconUrl: "perk_lead.png",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
   SOLID_JOHN: {
-    name: { en: "Solid John", ja: "ソリッド・ジョン" },
-    description: {
-      en: "Balanced all-round minor boosts. (Placeholder text)",
-      ja: "全体的に小さな万能強化を得ます。（仮テキスト）",
-    },
+    name: { en: "Solid John", ja: "PLACEHOLDER" },
+    effectsPositive: [
+      { en: "The first time the Slasher inspects the locker you're in, they are guaranteed not to kill you.", ja: "The first time the Slasher inspects the locker you're in, they are guaranteed not to kill you." }
+    ],
+    effectsNegative: [],
     iconUrl: "perk_john.png",
     pp: 4,
     creditsToUnlock: 1200,
