@@ -3,6 +3,7 @@ import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
 import { PerkKey } from "./lib/perks";
 import { PERKS } from "./lib/perkData";
+import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 
 const App = () => {
   const selectedKeys: Array<PerkKey> = [
@@ -31,23 +32,7 @@ const App = () => {
           <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
         </GridItem>
         <GridItem colSpan={2}>
-          <Text>Details</Text>
-          <Text>+:</Text>
-          {selectedKeys.map((key) => {
-            const perk = PERKS[key];
-            return (
-              <Box key={key} mb={3}>
-                <Text fontWeight="bold">{perk.name.en}</Text>
-                {perk.effectsPositive.map((eff, i) => (
-                  <Text key={i} fontSize="sm" color="green.300">+ {eff.en}</Text>
-                ))}
-                {perk.effectsNegative.map((eff, i) => (
-                  <Text key={`neg-${i}`} fontSize="sm" color="red.300">- {eff.en}</Text>
-                ))}
-              </Box>
-            );
-          })}
-          <Text>-:</Text>
+          <PerkDetailList selectedKeys={selectedKeys} />
         </GridItem>
       </Grid>
     </Container>
