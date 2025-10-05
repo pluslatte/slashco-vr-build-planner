@@ -1,14 +1,15 @@
-import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
+import { Box, Container, Field, Grid, GridItem, Group, NumberInput, Text } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
 import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
+import { useState } from "react";
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
+  const [level, setLevel] = useState(30);
 
-  const level = 30;
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
   return (
@@ -23,17 +24,37 @@ const App = () => {
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
-          <Text>Item Section</Text>
-        </GridItem>
-        <GridItem colSpan={2}>
-          <Text>Level: {level}</Text>
-          <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
-        </GridItem>
-        <GridItem colSpan={2}>
-          <PerkDetailList selectedKeys={selectedKeys} />
+          <Box py={4}>
+            <PerkDetailList selectedKeys={selectedKeys} />
+          </Box>
         </GridItem>
       </Grid>
-    </Container>
+      <Group grow p={4}>
+        <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
+        <Field.Root>
+          <Field.Label>Level</Field.Label>
+          <NumberInput.Root
+            value={level.toString()}
+            width="200px"
+            min={0}
+            max={100}
+            onValueChange={(e) => {
+              const num = parseInt(e.value);
+              if (!isNaN(num)) {
+                setLevel(num)
+              } else {
+                setLevel(0)
+              }
+            }}
+          >
+            <NumberInput.Label />
+            <NumberInput.Control />
+            <NumberInput.Input />
+          </NumberInput.Root>
+          <Field.HelperText>Max PP: {maxPp}</Field.HelperText>
+        </Field.Root>
+      </Group>
+    </Container >
   )
 };
 
