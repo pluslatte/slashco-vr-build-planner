@@ -1,20 +1,12 @@
 import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
-import { PerkKey } from "./lib/perks";
 import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
-import { useState } from "react";
+import { usePerkSelector } from "./hooks/usePerkSelector";
 
 const App = () => {
-  const [selectedKeys, setSelectedKeys] = useState<Array<PerkKey>>([]);
-  const onTogglePerk = (key: PerkKey) => {
-    if (selectedKeys.includes(key)) {
-      setSelectedKeys(selectedKeys.filter(k => k !== key));
-    } else {
-      setSelectedKeys([...selectedKeys, key]);
-    }
-  };
+  const { selectedKeys, onTogglePerk } = usePerkSelector();
 
   const level = 30;
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
