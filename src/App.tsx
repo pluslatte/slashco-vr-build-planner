@@ -1,10 +1,13 @@
 import { Container } from "@chakra-ui/react"
 import Perk from "@/components/Perk"
+import { PERKS } from "@/lib/perks"
 
 function App() {
   return (
     <Container>
-      <Perk imageSrcUrl="https://slash.moe/img/perks/perk_mech1.png" />
+      {Object.entries(PERKS).map(([key, perk]) => (
+        <Perk key={key} imageSrcUrl={perk.iconUrl} />
+      ))}
     </Container>
   )
 }
