@@ -1,21 +1,24 @@
-import type { Perk } from "@/lib/perks";
+import type { Perk, PerkKey } from "@/lib/perks";
 import PerkIcon from "./PerkIcon";
 import { Box, Circle, Float } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip";
+import { PERKS } from "@/lib/perkData";
 
 interface Props {
-  perk: Perk;
+  perkKey: PerkKey;
+  isSelected: boolean;
 }
 const PerkEntry = (props: Props) => {
+  const perk: Perk = PERKS[props.perkKey];
   return (
-    <Tooltip content={props.perk.name.en}>
+    <Tooltip content={perk.name.en}>
       <Box position="relative">
         <Float placement="bottom-center">
           <Circle size="5" bg="gray.700" color="gray.300">
-            {props.perk.pp}
+            {perk.pp}
           </Circle>
         </Float>
-        <PerkIcon imgUrl={props.perk.iconUrl} />
+        <PerkIcon imgUrl={perk.iconUrl} active={props.isSelected} />
       </Box>
     </Tooltip>
   );

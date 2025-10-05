@@ -4,15 +4,11 @@ import PpGauge from "./components/PpGauge";
 import { PerkKey } from "./lib/perks";
 import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
+import { useState } from "react";
 
 const App = () => {
-  const selectedKeys: Array<PerkKey> = [
-    PerkKey.ADRENALINE_RUSH,
-    PerkKey.LIGHTFOOT,
-    PerkKey.ATHLETE,
-    PerkKey.ALIVE_HARD,
-    PerkKey.EXTREMELY_BUFF,
-  ];
+  const [selectedKeys, setSelectedKeys] = useState<Array<PerkKey>>([]);
+
   const level = 30;
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
@@ -21,7 +17,10 @@ const App = () => {
       <Grid templateColumns="repeat(2, 1fr)" gap={6}>
         <GridItem colSpan={1}>
           <Box p={4}>
-            <PerkList />
+            <PerkList
+              selectedKeys={selectedKeys}
+              setSelectedKeys={setSelectedKeys}
+            />
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
