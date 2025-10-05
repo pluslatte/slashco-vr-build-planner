@@ -1,11 +1,10 @@
-import { Box, Container, Grid, GridItem, Progress, Text } from "@chakra-ui/react"
+import { Box, Container, Grid, GridItem, Text } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
-import { useState } from "react";
 import PpGauge from "./components/PpGauge";
 
 function App() {
-  const [level, setLevel] = useState(30);
-  const [ppUsed, setPpUsed] = useState(14);
+  const level = 30;
+  const ppUsed = 14;
   const maxPp = Math.min(Math.floor(level / 2), 15);
   return (
     <Container maxW="4xl">
