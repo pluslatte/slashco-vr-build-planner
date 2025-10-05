@@ -272,7 +272,7 @@ export const PERKS: Record<PerkKey, Perk> = {
       ja: "致死ダメージを一度だけ耐えます。（仮テキスト）",
     },
     iconUrl: "perk_alive.png",
-    pp: 4,
+    pp: 3,
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
