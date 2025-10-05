@@ -386,7 +386,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   EXTERMINATOR_FLASHLIGHT: {
-    name: { en: "Exterminator (Flashlight)", ja: "Exterminator (Flashlight)" },
+    name: { en: "Exterminator Flashlight", ja: "Exterminator Flashlight" },
     effectsPositive: [
       {
         en: "Flashlight range is doubled.",

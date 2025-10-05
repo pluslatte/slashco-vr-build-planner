@@ -5,6 +5,7 @@ import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
 import { useState } from "react";
+import LevelSelector from "./components/LevelSelector";
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
@@ -27,28 +28,11 @@ const App = () => {
             <Box h={4} />
             <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
             <Box h={4} />
-            <Field.Root>
-              <Field.Label>Level</Field.Label>
-              <NumberInput.Root
-                value={level.toString()}
-                width="100px"
-                min={0}
-                max={100}
-                onValueChange={(e) => {
-                  const num = parseInt(e.value);
-                  if (!isNaN(num)) {
-                    setLevel(num)
-                  } else {
-                    setLevel(0)
-                  }
-                }}
-              >
-                <NumberInput.Label />
-                <NumberInput.Control />
-                <NumberInput.Input />
-              </NumberInput.Root>
-              <Field.HelperText>Max PP: {maxPp}</Field.HelperText>
-            </Field.Root>
+            <LevelSelector
+              level={level}
+              setLevel={setLevel}
+              maxPp={maxPp}
+            />
           </Box>
         </GridItem>
         <GridItem colSpan={1}>
