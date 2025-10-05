@@ -6,6 +6,7 @@ import type { PerkKey } from "@/lib/perks";
 
 interface Props {
   selectedKeys: Array<PerkKey>;
+  lang: 'en' | 'ja';
 };
 const PerkDetailList = (props: Props) => {
   return (
@@ -15,7 +16,7 @@ const PerkDetailList = (props: Props) => {
         const perk = PERKS[key];
         return (
           <Box key={key} mb={3}>
-            <PerkDetail perk={perk} />
+            <PerkDetail perk={perk} lang={props.lang} />
           </Box>
         );
       })}

@@ -8,11 +8,12 @@ interface Props {
   perkKey: PerkKey;
   isSelected: boolean;
   onToggle: (key: PerkKey) => void;
+  lang: 'en' | 'ja';
 }
 const PerkEntry = (props: Props) => {
   const perk: Perk = PERKS[props.perkKey];
   return (
-    <Tooltip content={perk.name.en}>
+    <Tooltip content={perk.name[props.lang]}>
       <Box position="relative">
         <Float placement="bottom-center">
           <Circle size="5" bg="gray.700" color="gray.300">

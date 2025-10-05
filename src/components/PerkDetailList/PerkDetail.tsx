@@ -4,6 +4,7 @@ import PerkIcon from "../PerkEntry/PerkIcon";
 
 interface Props {
   perk: Perk;
+  lang: 'en' | 'ja';
 }
 const PerkDetail = (props: Props) => {
   return (
@@ -14,12 +15,12 @@ const PerkDetail = (props: Props) => {
         </Box>
       </GridItem>
       <GridItem colSpan={5}>
-        <Text fontWeight="bold">{props.perk.name.en}</Text>
+        <Text fontWeight="bold">{props.perk.name[props.lang]}</Text>
         {props.perk.effectsPositive.map((eff, i) => (
-          <Text key={i} fontSize="sm" color="green.300">+ {eff.en}</Text>
+          <Text key={i} fontSize="sm" color="green.300">+ {eff[props.lang]}</Text>
         ))}
         {props.perk.effectsNegative.map((eff, i) => (
-          <Text key={`neg-${i}`} fontSize="sm" color="red.300">- {eff.en}</Text>
+          <Text key={`neg-${i}`} fontSize="sm" color="red.300">- {eff[props.lang]}</Text>
         ))}
       </GridItem>
     </Grid>

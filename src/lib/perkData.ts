@@ -6,7 +6,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Fueling speed is increased by 50%.",
-        ja: "Fueling speed is increased by 50%."
+        ja: "発電機への給油速度 +50％"
       }
     ],
     effectsNegative: [],
