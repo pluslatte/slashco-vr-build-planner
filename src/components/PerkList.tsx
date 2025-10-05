@@ -1,6 +1,6 @@
 import { PERKS } from "@/lib/perkData";
 import { PerkKey } from "@/lib/perks";
-import { Grid, Text } from "@chakra-ui/react";
+import { Grid } from "@chakra-ui/react";
 import PerkEntry from "./PerkEntry/PerkEntry";
 
 const PerkList = () => (

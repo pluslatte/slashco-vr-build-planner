@@ -1,6 +1,6 @@
 import type { Perk } from "@/lib/perks";
 import PerkIcon from "./PerkIcon";
-import { Box, Circle, Float, Text, VStack } from "@chakra-ui/react";
+import { Box, Circle, Float } from "@chakra-ui/react";
 
 interface Props {
   perk: Perk;
