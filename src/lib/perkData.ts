@@ -2,7 +2,7 @@ import type { Perk, PerkKey } from "./perks";
 
 export const PERKS: Record<PerkKey, Perk> = {
   MECHANIC: {
-    name: { en: "Mechanic I", ja: "PLACEHOLDER" },
+    name: { en: "Mechanic I", ja: "Mechanic I" },
     effectsPositive: [
       {
         en: "Fueling speed is increased by 50%.",
@@ -16,7 +16,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 1,
   },
   HEALTHY: {
-    name: { en: "Healthy I", ja: "PLACEHOLDER" },
+    name: { en: "Healthy I", ja: "Healthy I" },
     effectsPositive: [
       {
         en: "Consumable items heal 50% more.",
@@ -34,7 +34,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 1,
   },
   ADRENALINE_RUSH: {
-    name: { en: "Adrenaline Rush", ja: "PLACEHOLDER" },
+    name: { en: "Adrenaline Rush", ja: "Adrenaline Rush" },
     effectsPositive: [
       {
         en: "When the helicopter arrives, minor healing and a brief speed boost will be applied.",
@@ -48,7 +48,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 1,
   },
   HYPERPERCEPTIVE: {
-    name: { en: "Hyperperceptive", ja: "PLACEHOLDER" },
+    name: { en: "Hyperperceptive", ja: "Hyperperceptive" },
     effectsPositive: [
       {
         en: "The footsteps of Slashers are louder to you.",
@@ -62,7 +62,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 1,
   },
   UNCLE_SINK: {
-    name: { en: "Uncle Sink", ja: "PLACEHOLDER" },
+    name: { en: "Uncle Sink", ja: "Uncle Sink" },
     effectsPositive: [
       {
         en: "You can consume Glass Bottles for slight healing.",
@@ -76,7 +76,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 1,
   },
   MECHANIC_2: {
-    name: { en: "Mechanic II", ja: "PLACEHOLDER" },
+    name: { en: "Mechanic II", ja: "Mechanic II" },
     effectsPositive: [
       {
         en: "The difficulty of Battery Insertion is decreased.",
@@ -94,7 +94,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 3,
   },
   BOUNTY_HUNTER: {
-    name: { en: "Bounty Hunter", ja: "PLACEHOLDER" },
+    name: { en: "Bounty Hunter", ja: "Bounty Hunter" },
     effectsPositive: [
       {
         en: "All items related to Informal Assignments will faintly glow.",
@@ -108,7 +108,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 3,
   },
   CLOSE_ENCOUNTER: {
-    name: { en: "Close Encounter", ja: "PLACEHOLDER" },
+    name: { en: "Close Encounter", ja: "Close Encounter" },
     effectsPositive: [
       {
         en: "Your movement speed is slightly increased the lower your health is.",
@@ -127,7 +127,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 3,
   },
   SPEED_ADDICT: {
-    name: { en: "Speed Addict", ja: "PLACEHOLDER" },
+    name: { en: "Speed Addict", ja: "Speed Addict" },
     effectsPositive: [
       {
         en: "You will no longer be affected by effects which slow down your movement speed.",
@@ -146,7 +146,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 3,
   },
   SHADOWBORN: {
-    name: { en: "Shadowborn", ja: "PLACEHOLDER" },
+    name: { en: "Shadowborn", ja: "Shadowborn" },
     effectsPositive: [
       {
         en: "Increase the ability to see in the dark.",
@@ -160,7 +160,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 3,
   },
   MERCHANT: {
-    name: { en: "Merchant", ja: "PLACEHOLDER" },
+    name: { en: "Merchant", ja: "Merchant" },
     effectsPositive: [
       {
         en: "Increase Item Buyback rate to 50%.",
@@ -174,7 +174,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 5,
   },
   LIGHTFOOT: {
-    name: { en: "Lightfoot I", ja: "PLACEHOLDER" },
+    name: { en: "Lightfoot I", ja: "Lightfoot I" },
     effectsPositive: [
       {
         en: "The loudness of your footsteps is reduced 50%.",
@@ -188,7 +188,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 5,
   },
   HEALTHY_2: {
-    name: { en: "Healthy II", ja: "PLACEHOLDER" },
+    name: { en: "Healthy II", ja: "Healthy II" },
     effectsPositive: [
       {
         en: "Consumable items heal 50% more.",
@@ -206,7 +206,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 5,
   },
   HEAVY: {
-    name: { en: "Heavy", ja: "PLACEHOLDER" },
+    name: { en: "Heavy", ja: "Heavy" },
     effectsPositive: [
       {
         en: "Your maximum health is slightly increased.",
@@ -220,7 +220,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 5,
   },
   MCNALLY_HANDS: {
-    name: { en: "McNally Hands", ja: "PLACEHOLDER" },
+    name: { en: "McNally Hands", ja: "McNally Hands" },
     effectsPositive: [
       {
         en: "The Master Lock 607 will have a lower chance of breaking when used.",
@@ -243,7 +243,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 5,
   },
   MECHANIC_3: {
-    name: { en: "Mechanic III", ja: "PLACEHOLDER" },
+    name: { en: "Mechanic III", ja: "Mechanic III" },
     effectsPositive: [
       {
         en: "Pouring Fuel after the Battery has been inserted will not cause a fail-start.",
@@ -261,7 +261,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 10,
   },
   LIGHTFOOT_2: {
-    name: { en: "Lightfoot II", ja: "PLACEHOLDER" },
+    name: { en: "Lightfoot II", ja: "Lightfoot II" },
     effectsPositive: [
       {
         en: "Entering and exiting Lockers is completely silent.",
@@ -279,7 +279,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 10,
   },
   BATTER_UP: {
-    name: { en: "Batter Up", ja: "PLACEHOLDER" },
+    name: { en: "Batter Up", ja: "Batter Up" },
     effectsPositive: [
       {
         en: "Gain a brief speed boost when blinding a Slasher.",
@@ -302,7 +302,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 10,
   },
   GLUTTON: {
-    name: { en: "Glutton", ja: "PLACEHOLDER" },
+    name: { en: "Glutton", ja: "Glutton" },
     effectsPositive: [
       {
         en: "All consumable item effects deplete 50% slower.",
@@ -321,7 +321,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 10,
   },
   ACCOUNTANT: {
-    name: { en: "Accountant", ja: "PLACEHOLDER" },
+    name: { en: "Accountant", ja: "Accountant" },
     effectsPositive: [
       {
         en: "Gain the ability to hear faint sounds coming from Documents.",
@@ -339,7 +339,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 10,
   },
   STEALTH_CAMO: {
-    name: { en: "Stealth Camo", ja: "PLACEHOLDER" },
+    name: { en: "Stealth Camo", ja: "Stealth Camo" },
     effectsPositive: [
       {
         en: "Slashers cannot spot you as easily.",
@@ -353,7 +353,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   RABBIT_FEET: {
-    name: { en: "Rabbit Feet", ja: "PLACEHOLDER" },
+    name: { en: "Rabbit Feet", ja: "Rabbit Feet" },
     effectsPositive: [
       {
         en: "The first Bear Trap you would trigger gets immediately disarmed.",
@@ -367,7 +367,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   ATHLETE: {
-    name: { en: "Athlete", ja: "PLACEHOLDER" },
+    name: { en: "Athlete", ja: "Athlete" },
     effectsPositive: [
       {
         en: "Increases overall movement speed for the first 8 minutes of the round.",
@@ -386,7 +386,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   EXTERMINATOR_FLASHLIGHT: {
-    name: { en: "Exterminator (Flashlight)", ja: "PLACEHOLDER" },
+    name: { en: "Exterminator (Flashlight)", ja: "Exterminator (Flashlight)" },
     effectsPositive: [
       {
         en: "Flashlight range is doubled.",
@@ -409,7 +409,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   ALIVE_HARD: {
-    name: { en: "Alive Hard", ja: "PLACEHOLDER" },
+    name: { en: "Alive Hard", ja: "Alive Hard" },
     effectsPositive: [
       {
         en: "Gain the ability to survive certain death only once.",
@@ -432,7 +432,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 15,
   },
   GROUCH_BEHAVIOR: {
-    name: { en: "Grouch Behavior", ja: "PLACEHOLDER" },
+    name: { en: "Grouch Behavior", ja: "Grouch Behavior" },
     effectsPositive: [
       {
         en: "While hiding in a locker, you gain small passive health regeneration.",
@@ -450,7 +450,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 20,
   },
   EXTREMELY_BUFF: {
-    name: { en: "Extremely Buff", ja: "PLACEHOLDER" },
+    name: { en: "Extremely Buff", ja: "Extremely Buff" },
     effectsPositive: [
       {
         en: "Carrying heavy items no longer slows you down.",
@@ -469,7 +469,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 20,
   },
   BALKAN_WARRIOR: {
-    name: { en: "Balkan Warrior", ja: "PLACEHOLDER" },
+    name: { en: "Balkan Warrior", ja: "Balkan Warrior" },
     effectsPositive: [
       {
         en: "The after-effect of Balkan Boost no longer cripples you.",
@@ -488,7 +488,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 20,
   },
   LEAD_BELLY: {
-    name: { en: "Lead Belly", ja: "PLACEHOLDER" },
+    name: { en: "Lead Belly", ja: "Lead Belly" },
     effectsPositive: [
       {
         en: "All incoming damage is reduced by 50%.",
@@ -507,7 +507,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     levelToUnlock: 20,
   },
   SOLID_JOHN: {
-    name: { en: "Solid John", ja: "PLACEHOLDER" },
+    name: { en: "Solid John", ja: "Solid John" },
     effectsPositive: [
       {
         en: "The first time the Slasher inspects the locker you're in, they are guaranteed not to kill you.",
