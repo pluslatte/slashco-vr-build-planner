@@ -7,6 +7,7 @@ import { PERKS } from "@/lib/perkData";
 interface Props {
   perkKey: PerkKey;
   isSelected: boolean;
+  onToggle: (key: PerkKey) => void;
 }
 const PerkEntry = (props: Props) => {
   const perk: Perk = PERKS[props.perkKey];
@@ -18,7 +19,9 @@ const PerkEntry = (props: Props) => {
             {perk.pp}
           </Circle>
         </Float>
-        <PerkIcon imgUrl={perk.iconUrl} active={props.isSelected} />
+        <button onClick={() => props.onToggle(props.perkKey)} style={{ all: "unset" }}>
+          <PerkIcon imgUrl={perk.iconUrl} active={props.isSelected} />
+        </button>
       </Box>
     </Tooltip>
   );

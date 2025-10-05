@@ -8,6 +8,13 @@ import { useState } from "react";
 
 const App = () => {
   const [selectedKeys, setSelectedKeys] = useState<Array<PerkKey>>([]);
+  const onTogglePerk = (key: PerkKey) => {
+    if (selectedKeys.includes(key)) {
+      setSelectedKeys(selectedKeys.filter(k => k !== key));
+    } else {
+      setSelectedKeys([...selectedKeys, key]);
+    }
+  };
 
   const level = 30;
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
@@ -19,7 +26,7 @@ const App = () => {
           <Box p={4}>
             <PerkList
               selectedKeys={selectedKeys}
-              setSelectedKeys={setSelectedKeys}
+              onTogglePerk={onTogglePerk}
             />
           </Box>
         </GridItem>
