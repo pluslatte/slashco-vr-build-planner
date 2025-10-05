@@ -11,7 +11,7 @@ const PerkDetailList = (props: Props) => {
   return (
     <React.Fragment>
       <Text>Details</Text>
-      {props.selectedKeys.map((key) => {
+      {props.selectedKeys.sort((a, b) => a.localeCompare(b)).map((key) => {
         const perk = PERKS[key];
         return (
           <Box key={key} mb={3}>
