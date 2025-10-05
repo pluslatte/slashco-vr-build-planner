@@ -7,9 +7,17 @@ interface Props {
 const PerkIcon = (props: Props) => {
   return (
     <AvatarGroup>
-      <Avatar.Root shape="square" size="xl">
+      <Avatar.Root
+        shape="square"
+        size="xl"
+        style={{
+          filter: props.active
+            ? "brightness(0.5) sepia(1) hue-rotate(80deg) saturate(2)"
+            : "grayscale(1)",
+        }}
+      >
         <Avatar.Fallback color={props.active ? "green.500" : ""}>X</Avatar.Fallback>
-        <Avatar.Image color={props.active ? "green.500" : ""} src={props.imgUrl} />
+        <Avatar.Image src={props.imgUrl} />
       </Avatar.Root>
     </AvatarGroup>
   );
