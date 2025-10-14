@@ -358,6 +358,10 @@ export const PERKS: Record<PerkKey, Perk> = {
       {
         en: "The first Bear Trap you would trigger gets immediately disarmed.",
         ja: "最初に踏んだトラバサミを無効化し、破壊できる。"
+      },
+      {
+        en: "Bear Traps will emit a faint glow.",
+        ja: "トラバサミがかすかに光る。"
       }
     ],
     effectsNegative: [],
