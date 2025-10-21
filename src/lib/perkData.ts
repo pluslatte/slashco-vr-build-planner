@@ -75,6 +75,20 @@ export const PERKS: Record<PerkKey, Perk> = {
     creditsToUnlock: 0,
     levelToUnlock: 1,
   },
+  PANIC_SENSE: {
+    name: { en: "Panic Sense", ja: "パニック・センス" },
+    effectsPositive: [
+      {
+        en: "ラウンド開始から20分経過後、毎分1回、最も近い燃料・バッテリー・文書のオーラを短時間確認できる能力を得る。",
+        ja: "ラウンド開始から20分経過後、毎分1回、最も近い燃料・バッテリー・文書のオーラを短時間確認できる能力を得る。"
+      }
+    ],
+    effectsNegative: [],
+    iconUrl: "",
+    pp: 1,
+    creditsToUnlock: 0,
+    levelToUnlock: 1,
+  },
   MECHANIC_2: {
     name: { en: "Mechanic II", ja: "メカニックII" },
     effectsPositive: [
@@ -159,6 +173,25 @@ export const PERKS: Record<PerkKey, Perk> = {
     creditsToUnlock: 150,
     levelToUnlock: 3,
   },
+  MUKBANG_CHAMPION: {
+    name: { en: "Mukbang Champion", ja: "大食いチャンピオン" },
+    effectsPositive: [
+      {
+        en: "消費アイテムによる回復効果は、半径6メートル以内の全プレイヤーに付与される。",
+        ja: "消費アイテムによる回復効果は、半径6メートル以内の全プレイヤーに付与される。",
+      },
+    ],
+    effectsNegative: [
+      {
+        en: "少なくとも一人のプレイヤーに付与された場合、自身の回復量は大幅に減少する。",
+        ja: "少なくとも一人のプレイヤーに付与された場合、自身の回復量は大幅に減少する。",
+      },
+    ],
+    iconUrl: "",
+    pp: 2,
+    creditsToUnlock: 150,
+    levelToUnlock: 3,
+  },
   MERCHANT: {
     name: { en: "Merchant", ja: "商人" },
     effectsPositive: [
@@ -238,6 +271,25 @@ export const PERKS: Record<PerkKey, Perk> = {
       }
     ],
     iconUrl: "perk_mcnallyhands.png",
+    pp: 2,
+    creditsToUnlock: 300,
+    levelToUnlock: 5,
+  },
+  FIRST_RESPONDER: {
+    name: { en: "First Responder", ja: "第一対応者" },
+    effectsPositive: [
+      {
+        en: "瀕死状態のプレイヤーを回復する能力を獲得。このアクションには5分のクールダウンがあり、クレジットと経験値が報酬として得られる。",
+        ja: "瀕死状態のプレイヤーを回復する能力を獲得。このアクションには5分のクールダウンがあり、クレジットと経験値が報酬として得られる。"
+      }
+    ],
+    effectsNegative: [
+      {
+        en: "全ての非致死ダメージが致死ダメージに変わる。",
+        ja: "全ての非致死ダメージが致死ダメージに変わる。"
+      }
+    ],
+    iconUrl: "",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
@@ -334,6 +386,25 @@ export const PERKS: Record<PerkKey, Perk> = {
     ],
     effectsNegative: [],
     iconUrl: "perk_account.png",
+    pp: 3,
+    creditsToUnlock: 500,
+    levelToUnlock: 10,
+  },
+  DEITY_SWINDLER: {
+    name: { en: "Deity Swindler", ja: "神を騙す者" },
+    effectsPositive: [
+      {
+        en: "死のお守りを使用する能力を獲得し、それを破壊することで、最も近いプレイヤーに一時的なパッシブ効果の死のお守りを付与する。",
+        ja: "死のお守りを使用する能力を獲得し、それを破壊することで、最も近いプレイヤーに一時的なパッシブ効果の死のお守りを付与する。"
+      }
+    ],
+    effectsNegative: [
+      {
+        en: "Revival through the Death Amulet is impossible.",
+        ja: "死のお守りによる復活は不可能となる"
+      }
+    ],
+    iconUrl: "",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
@@ -435,6 +506,20 @@ export const PERKS: Record<PerkKey, Perk> = {
     creditsToUnlock: 800,
     levelToUnlock: 15,
   },
+  SCAPEGOAT: {
+    name: { en: "Scapegoat", ja: "スケープゴート" },
+    effectsPositive: [
+      {
+        en: "健康状態かつ他プレイヤーから6メートル以内の場合、そのプレイヤーが受けるダメージは全て非致死ダメージとして自分に転嫁される。",
+        ja: "健康状態かつ他プレイヤーから6メートル以内の場合、そのプレイヤーが受けるダメージは全て非致死ダメージとして自分に転嫁される。"
+      }
+    ],
+    effectsNegative: [],
+    iconUrl: "",
+    pp: 4,
+    creditsToUnlock: 1200,
+    levelToUnlock: 20,
+  },
   GROUCH_BEHAVIOR: {
     name: { en: "Grouch Behavior", ja: "GROUCH化" },
     effectsPositive: [
@@ -524,4 +609,37 @@ export const PERKS: Record<PerkKey, Perk> = {
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
+  FREAKY_DOCTOR: {
+    name: { en: "Freaky Doctor", ja: "異常なドクター" },
+    effectsPositive: [
+      {
+        en: `半径20メートル以内の全プレイヤー:
+        - 軽度のダメージ耐性
+        - 回復量が25%増加
+        - 効果の消耗速度が10%低下
+        - ジェネレーターの給油速度が25%向上する
+      `,
+        ja: `半径20メートル以内の全プレイヤー:
+        - 軽度のダメージ耐性
+        - 回復量が25%増加
+        - 効果の消耗速度が10%低下
+        - ジェネレーターの給油速度が25%向上する
+      `,
+      },
+    ],
+    effectsNegative: [
+      {
+        en: "受ける全ダメージが倍増する。",
+        ja: "受ける全ダメージが倍増する。",
+      },
+      {
+        en: "移動速度が20%低下する。",
+        ja: "移動速度が20%低下する。"
+      },
+    ],
+    iconUrl: "",
+    pp: 4,
+    creditsToUnlock: 1200,
+    levelToUnlock: 20,
+  }
 } as const;
