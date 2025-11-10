@@ -126,7 +126,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Your movement speed is slightly increased the lower your health is while not in direct line of sight of a Slasher.",
-        ja: "スラッシャーの視界にない場合、体力が低いほど移動速度がわずかに上昇する。"
+        ja: "スラッシャーの視界にない場合、体力が低いほど移動速度がわずかに上昇する"
       }
     ],
     effectsNegative: [
@@ -145,7 +145,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "You will no longer be affected by effects which slow down your movement speed.",
-        ja: "移動速度が遅くなる効果の影響を受けなくなる。"
+        ja: "移動速度が遅くなる効果の影響を受けなくなる"
       }
     ],
     effectsNegative: [
@@ -164,7 +164,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Increase the ability to see in the dark.",
-        ja: "懐中電灯を使用していない間、徐々に暗闇での視力を高める。"
+        ja: "懐中電灯を使用していない間、徐々に暗闇での視力を高める"
       }
     ],
     effectsNegative: [],
@@ -178,13 +178,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Healing from a consumable item will be transferred to all players in a 6 meter radius.",
-        ja: "回復アイテムからの回復効果が、半径6メートル以内の全てのプレイヤーに転送される。",
+        ja: "回復アイテムからの回復効果が、半径6メートル以内の全てのプレイヤーに転送される",
       },
     ],
     effectsNegative: [
       {
         en: "If transferred to at least 1 player, personal healing will be drastically reduced.",
-        ja: "回復効果が1人以上のプレイヤーに転送された場合、自身の回復効果が大幅に減少する。",
+        ja: "回復効果が1人以上のプレイヤーに転送された場合、自身の回復効果が大幅に減少する",
       },
     ],
     iconUrl: "",
@@ -286,7 +286,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All non-lethal damage will become lethal.",
-        ja: "全ての非致死ダメージが致死ダメージに変わる。"
+        ja: "全ての非致死ダメージが致死ダメージに変わる"
       }
     ],
     iconUrl: "",
@@ -638,12 +638,12 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All incoming damage is doubled.",
-        ja: "受ける全ダメージが倍増する",
+        ja: "受ける全ダメージが倍増する"
       },
       {
         en: "Reduces movement speed by 20%.",
         ja: "移動速度が20%低下する"
-      },
+      }
     ],
     iconUrl: "",
     pp: 4,
