@@ -520,7 +520,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     ],
     effectsNegative: [],
     iconUrl: "perk_scapegoat.webp",
-    pp: 4,
+    pp: 3,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
   },
