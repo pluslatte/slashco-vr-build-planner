@@ -4,46 +4,13 @@ import PpGauge from "./components/PpGauge";
 import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
-import { useState, useEffect } from "react";
+import { useSettings } from "./hooks/useSettings";
 import LevelSelector from "./components/LevelSelector";
 import { LuExternalLink } from "react-icons/lu";
 
-const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
-
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
-  const [level, setLevel] = useState(() => {
-    try {
-      const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        return parsed.level || 30;
-      }
-    } catch (error) {
-      console.error("Failed to load settings from localStorage:", error);
-    }
-    return 30;
-  });
-  const [lang, setLang] = useState<'en' | 'ja'>(() => {
-    try {
-      const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
-      if (stored) {
-        const parsed = JSON.parse(stored);
-        return parsed.lang || 'ja';
-      }
-    } catch (error) {
-      console.error("Failed to load settings from localStorage:", error);
-    }
-    return 'ja';
-  });
-
-  useEffect(() => {
-    try {
-      localStorage.setItem(SETTINGS_STORAGE_KEY, JSON.stringify({ level, lang }));
-    } catch (error) {
-      console.error("Failed to save settings to localStorage:", error);
-    }
-  }, [level, lang]);
+  const { level, setLevel, lang, setLang } = useSettings();
 
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
