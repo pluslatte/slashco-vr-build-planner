@@ -48,7 +48,7 @@ const App = () => {
             <Box h={4} />
             <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
             <Box h={4} />
-            <Text color="gray.500">各種表記は以下のサイトを参考にしています。</Text>
+            <Text color="gray.500">パークの内容、画像は以下のサイトより</Text>
             <Link pr={2} color="gray.500" href="https://slashco-vr.fandom.com/wiki/Perks" target="_blank" rel="noopener noreferrer">SlashCo VR Wiki<LuExternalLink /></Link>
             <Link color="gray.500" href="https://wikiwiki.jp/slashco/PERKS" target="_blank" rel="noopener noreferrer">SlashCoVR Wiki*<LuExternalLink /></Link>
           </Box>

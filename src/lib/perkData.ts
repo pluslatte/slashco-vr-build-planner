@@ -84,7 +84,7 @@ export const PERKS: Record<PerkKey, Perk> = {
       }
     ],
     effectsNegative: [],
-    iconUrl: "",
+    iconUrl: "perk_panicsense.webp",
     pp: 1,
     creditsToUnlock: 0,
     levelToUnlock: 1,
@@ -187,7 +187,7 @@ export const PERKS: Record<PerkKey, Perk> = {
         ja: "回復効果が1人以上のプレイヤーに転送された場合、自身の回復効果が大幅に減少する",
       },
     ],
-    iconUrl: "",
+    iconUrl: "perk_mukbang.webp",
     pp: 2,
     creditsToUnlock: 150,
     levelToUnlock: 3,
@@ -289,7 +289,7 @@ export const PERKS: Record<PerkKey, Perk> = {
         ja: "全ての非致死ダメージが致死ダメージに変わる"
       }
     ],
-    iconUrl: "",
+    iconUrl: "perk_firstresponder.webp",
     pp: 2,
     creditsToUnlock: 300,
     levelToUnlock: 5,
@@ -408,7 +408,7 @@ export const PERKS: Record<PerkKey, Perk> = {
         ja: "あなたは死のお守りで復活できない"
       }
     ],
-    iconUrl: "",
+    iconUrl: "perk_deity.webp",
     pp: 3,
     creditsToUnlock: 500,
     levelToUnlock: 10,
@@ -519,7 +519,7 @@ export const PERKS: Record<PerkKey, Perk> = {
       }
     ],
     effectsNegative: [],
-    iconUrl: "",
+    iconUrl: "perk_scapegoat.webp",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
@@ -645,7 +645,7 @@ export const PERKS: Record<PerkKey, Perk> = {
         ja: "移動速度が20%低下する"
       }
     ],
-    iconUrl: "",
+    iconUrl: "perk_freaky.webp",
     pp: 4,
     creditsToUnlock: 1200,
     levelToUnlock: 20,
