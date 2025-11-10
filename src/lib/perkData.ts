@@ -6,7 +6,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Fueling speed is increased by 50%.",
-        ja: "給油速度が+50％"
+        ja: "給油速度が50％増加する"
       }
     ],
     effectsNegative: [],
@@ -20,11 +20,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Consumable items heal 50% more.",
-        ja: "消費アイテムの回復量が50％アップ。"
+        ja: "消費アイテムの回復量が50％増加する"
       },
       {
         en: "You can consume Costco Frozen Pizza for slight healing.",
-        ja: "冷凍ピザが食べられるようになる。"
+        ja: "冷凍ピザを食べることができ、わずかに回復できる"
       }
     ],
     effectsNegative: [],
@@ -38,7 +38,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "When the helicopter arrives, minor healing and a brief speed boost will be applied.",
-        ja: "ヘリコプター着陸時に数十秒間小加速し、僅かな回復、軽度の視界効果を得る。"
+        ja: "ヘリコプター着陸時、数十秒間の加速とわずかな回復を得る"
       }
     ],
     effectsNegative: [],
@@ -52,7 +52,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The footsteps of Slashers are louder to you.",
-        ja: "Slasherの足音が大きくなる。"
+        ja: "Slasherの足音がより大きく聞こえる"
       }
     ],
     effectsNegative: [],
@@ -66,7 +66,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "You can consume Glass Bottles for slight healing.",
-        ja: "ボトルが食べる事が出来、僅かに回復できる。"
+        ja: "ガラス瓶を食べることができ、わずかに回復できる"
       }
     ],
     effectsNegative: [],
@@ -94,11 +94,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The difficulty of Battery Insertion is decreased.",
-        ja: "バッテリー挿入の難易度が下がる。"
+        ja: "バッテリー挿入の難易度が下がる"
       },
       {
         en: "Failing Battery Insertion does not hurt you.",
-        ja: "バッテリー挿入失敗時のダメージを無効化。"
+        ja: "バッテリー挿入失敗時にダメージを受けない"
       }
     ],
     effectsNegative: [],
@@ -112,7 +112,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "All items related to Informal Assignments will faintly glow.",
-        ja: "依頼に関連するすべてのアイテムがかすかに光る。"
+        ja: "依頼に関連するすべてのアイテムがかすかに光る"
       }
     ],
     effectsNegative: [],
@@ -125,14 +125,14 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Close Encounter", ja: "近接遭遇" },
     effectsPositive: [
       {
-        en: "Your movement speed is slightly increased the lower your health is.",
-        ja: "体力が低いほど移動速度が少し速くなる。"
+        en: "Your movement speed is slightly increased the lower your health is while not in direct line of sight of a Slasher.",
+        ja: "スラッシャーの視界にない場合、体力が低いほど移動速度がわずかに上昇する。"
       }
     ],
     effectsNegative: [
       {
-        en: "Heavy items will slow you down more drastically the lower your health is.",
-        ja: "体力が低いほど、重いアイテムを持った時の移動速度が極端に遅くなる。"
+        en: "Your vision will worsen slightly more the lower your health is.",
+        ja: "体力が低いほど視界がわずかに悪化する"
       }
     ],
     iconUrl: "perk_encounter.png",
@@ -151,7 +151,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "Effects which increase your movement speed will deplete 25% faster.",
-        ja: "移動速度増加の効果時間の減りが25%速くなる。"
+        ja: "移動速度を増加させる効果の減りが25%速くなる"
       }
     ],
     iconUrl: "perk_addict.png",
@@ -197,7 +197,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Increase Item Buyback rate to 50%.",
-        ja: "アイテムの買取率を50%に引き上げる。"
+        ja: "アイテムの買取率を50%に引き上げる"
       }
     ],
     effectsNegative: [],
@@ -211,7 +211,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The loudness of your footsteps is reduced 50%.",
-        ja: "自身の足音の大きさが50%減少する。"
+        ja: "自身の足音の大きさが50%減少する"
       }
     ],
     effectsNegative: [],
@@ -225,11 +225,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Consumable items heal 50% more.",
-        ja: "消費アイテムの回復量が50％アップ。"
+        ja: "消費アイテムの回復量が50％増加する"
       },
       {
         en: "Receive slow health regeneration when under 50% health.",
-        ja: "体力が50%以下になると、20秒毎に僅かに体力が回復する。"
+        ja: "体力が50%以下になると、ゆっくりと体力が自動回復する"
       }
     ],
     effectsNegative: [],
@@ -243,7 +243,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Your maximum health is slightly increased.",
-        ja: "最大体力が少し増加。"
+        ja: "最大体力が少し増加する"
       }
     ],
     effectsNegative: [],
@@ -257,17 +257,17 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The Master Lock 607 will have a lower chance of breaking when used.",
-        ja: "マスターロック607を使用した際に壊れづらくなる。"
+        ja: "マスターロック607が壊れる確率が低くなる"
       },
       {
         en: "Gain a small CREDIT and EXP reward when successfully opening a locked door.",
-        ja: "開錠した際に少しの経験値とクレジットを得る。"
+        ja: "閉ざされたドアを開けると、少量のクレジットと経験値が得られる。"
       }
     ],
     effectsNegative: [
       {
         en: "Credits gained from Objectives are slightly reduced.",
-        ja: "目標達成によって得られるクレジット報酬がわずかに減少する。"
+        ja: "目標達成によって得られるクレジット報酬がわずかに減少する"
       }
     ],
     iconUrl: "perk_mcnallyhands.png",
@@ -299,11 +299,15 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Pouring Fuel after the Battery has been inserted will not cause a fail-start.",
-        ja: "バッテリーを挿入後に燃料を注いでも騒音が鳴らない。"
+        ja: "バッテリーを挿入後に燃料を注いでも騒音が鳴らなくなる"
       },
       {
         en: "Failing Fuel Pouring does not create a loud noise.",
-        ja: "燃料注入に失敗しても大きな音が出なくなる。"
+        ja: "燃料注入に失敗しても大きな音が出なくなる"
+      },
+      {
+        en: "Credits gained from Objectives are doubled.",
+        ja: "目標達成によって得られるクレジット報酬が2倍になる"
       }
     ],
     effectsNegative: [],
@@ -317,11 +321,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Entering and exiting Lockers is completely silent.",
-        ja: "ロッカーの出入りが完全に無音になる。"
+        ja: "ロッカーの出入りが完全に無音になる"
       },
       {
         en: "The loudness of your footsteps is reduced 50%.",
-        ja: "自身の足音の大きさが50%減少する。"
+        ja: "自身の足音の大きさが50%減少する"
       }
     ],
     effectsNegative: [],
@@ -335,17 +339,17 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Gain a brief speed boost when blinding a Slasher.",
-        ja: "スラッシャーをスタンさせると僅かに回復し、短時間加速する。"
+        ja: "スラッシャーをスタンさせると少しの間加速を得る"
       },
       {
         en: "Blinding Slashers will reward you with a CREDIT and EXP bonus.",
-        ja: "スタン成功時にボーナスEXPとクレジットが手に入る。"
+        ja: "スラッシャーをスタンさせるとボーナスEXPとクレジットが手に入る"
       }
     ],
     effectsNegative: [
       {
         en: "Increases the difficulty of Fuel Pouring and Battery Insertion.",
-        ja: "給油速度が低下し、バッテリースキルチェックが難化する。"
+        ja: "燃料注入とバッテリー挿入の難易度が上がる"
       }
     ],
     iconUrl: "perk_batterup.png",
@@ -358,13 +362,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "All consumable item effects deplete 50% slower.",
-        ja: "消耗アイテムの効果時間が50%減少するのが遅くなる。"
+        ja: "消耗アイテムの効果時間減少が50%遅くなる"
       }
     ],
     effectsNegative: [
       {
         en: "Consumable items heal 50% less.",
-        ja: "回復アイテムの効果が50%減少する。"
+        ja: "回復アイテムの効果が50%減少する"
       }
     ],
     iconUrl: "perk_glutton.png",
@@ -377,11 +381,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Gain the ability to hear faint sounds coming from Documents.",
-        ja: "機密文書からかすかな音が聞こえるようになる。"
+        ja: "機密文書からかすかな音が聞こえるようになる"
       },
       {
         en: "Collecting Documents will award you with double CREDITS and EXP.",
-        ja: "機密文書を入手した際の経験値とクレジットが倍になる。"
+        ja: "機密文書を入手した際の経験値とクレジットが倍になる"
       }
     ],
     effectsNegative: [],
@@ -414,7 +418,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Slashers cannot spot you as easily.",
-        ja: "Slasherに見つかりにくくなる。"
+        ja: "Slasherに見つかりにくくなる"
       }
     ],
     effectsNegative: [],
@@ -428,11 +432,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The first Bear Trap you would trigger gets immediately disarmed.",
-        ja: "最初に踏んだトラバサミを無効化し、破壊できる。"
+        ja: "最初に踏んだトラバサミを無効化し、破壊する"
       },
       {
         en: "Bear Traps will emit a faint glow.",
-        ja: "トラバサミがかすかに光る。"
+        ja: "トラバサミがかすかに光って見える"
       }
     ],
     effectsNegative: [],
@@ -445,14 +449,14 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Athlete", ja: "アスリート" },
     effectsPositive: [
       {
-        en: "Increases overall movement speed for the first 8 minutes of the round.",
-        ja: "ラウンド開始から8分間、全ての行動速度が上がる。"
+        en: "Increases overall movement speed for the first 5 minutes of the round.",
+        ja: "ラウンド開始から5分間、全ての行動速度が上がる"
       }
     ],
     effectsNegative: [
       {
         en: "Heavy items will slow you down more.",
-        ja: "重いアイテムを持つとより遅くなる。"
+        ja: "重いアイテムを持つとより動きが遅くなる"
       }
     ],
     iconUrl: "perk_athlete.png",
@@ -465,17 +469,17 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Flashlight range is doubled.",
-        ja: "懐中電灯の照射距離が2倍になる。"
+        ja: "懐中電灯の照射距離が2倍になる"
       },
       {
         en: "Flashlight toggling will not be heard by Slashers.",
-        ja: "懐中電灯の点灯・消灯音がスラッシャーに聞こえなくなる。"
+        ja: "懐中電灯の点灯・消灯音がスラッシャーに聞こえなくなる"
       }
     ],
     effectsNegative: [
       {
         en: "Flashlight beam is narrowed by 50%.",
-        ja: "懐中電灯の光線が50%狭くなる。"
+        ja: "懐中電灯の光線が50%細くなる"
       }
     ],
     iconUrl: "perk_flashlight.png",
@@ -488,17 +492,17 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Gain the ability to survive certain death only once.",
-        ja: "致死量のダメージを受けた際、1度だけダメージを無効化した後5秒間無敵になり、付近のスラッシャーにスタン・自身に加速効果を付与する。"
+        ja: "一度だけ致命的なダメージを受けても生存できる"
       }
     ],
     effectsNegative: [
       {
         en: "All healing is drastically reduced.",
-        ja: "消費アイテムの回復量が大幅に低下する。"
+        ja: "全ての回復効果が大幅に減少する"
       },
       {
         en: "The ability is inactive once the helicopter is set to arrive.",
-        ja: "脱出フェーズに入ると、効果が無効化される。"
+        ja: "ヘリコプターの到着が確定するとこの能力は無効になる"
       }
     ],
     iconUrl: "perk_alive.png",
@@ -525,11 +529,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "While hiding in a locker, you gain small passive health regeneration.",
-        ja: "ロッカーへ隠れた際に徐々に回復"
+        ja: "ロッカーに隠れている間、わずかに体力が自動回復する"
       },
       {
         en: "Every 4 minutes you can take a sip of Fuel for a short boost to overall movement speed.",
-        ja: "ガソリンを飲むと10秒間5m/s加速"
+        ja: "4分ごとに燃料を一口飲むことで、全ての行動速度が短時間上昇する"
       }
     ],
     effectsNegative: [],
@@ -543,13 +547,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Carrying heavy items no longer slows you down.",
-        ja: "重いアイテムを持っていても動きが遅くならない。"
+        ja: "重いアイテムを持っていても動きが遅くならない"
       }
     ],
     effectsNegative: [
       {
         en: "All incoming damage is increased by 50%.",
-        ja: "すべての被ダメージが50%増加"
+        ja: "すべての被ダメージが50%増加する"
       }
     ],
     iconUrl: "perk_zyzz.png",
@@ -562,13 +566,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The after-effect of Balkan Boost no longer cripples you.",
-        ja: "バルカン・ブーストの後遺症で動けなくならない。"
+        ja: "バルカン・ブーストの効果終了後に動きが鈍くならなくなる"
       }
     ],
     effectsNegative: [
       {
         en: "The Fueling Speed bonus of Balkan Boost is decreased.",
-        ja: "バルカン・ブーストの注油速度ボーナスが減少する。"
+        ja: "バルカン・ブーストがもつ燃料注入速度の増加効果が減少する"
       }
     ],
     iconUrl: "perk_balkan.png",
@@ -581,13 +585,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "All incoming damage is reduced by 50%.",
-        ja: "受けるダメージが50%減少する。"
+        ja: "すべての被ダメージが50%減少する"
       }
     ],
     effectsNegative: [
       {
         en: "The loudness of your footsteps is increased by 50%.",
-        ja: "足音の大きさが50%増加する。"
+        ja: "自身の足音の大きさが50%増加する"
       }
     ],
     iconUrl: "perk_lead.png",
@@ -600,7 +604,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The first time the Slasher inspects the locker you're in, they are guaranteed not to kill you.",
-        ja: "Slasherが自分が入っているロッカーを初めて見られた際にだけ殺されない。"
+        ja: "ロッカーに入っているところをスラッシャーが初めて確認した際、殺されずに済む"
       }
     ],
     effectsNegative: [],
