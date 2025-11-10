@@ -79,8 +79,8 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Panic Sense", ja: "パニック・センス" },
     effectsPositive: [
       {
-        en: "ラウンド開始から20分経過後、毎分1回、最も近い燃料・バッテリー・文書のオーラを短時間確認できる能力を得る。",
-        ja: "ラウンド開始から20分経過後、毎分1回、最も近い燃料・バッテリー・文書のオーラを短時間確認できる能力を得る。"
+        en: "After 20 minutes of the round have passed, gain the ability to see a brief aura of the closest Fuel, Battery or Document every minute.",
+        ja: "ラウンド開始から20分経過後、毎分最も近い燃料、バッテリー、または機密文書を少しの間感知できる"
       }
     ],
     effectsNegative: [],
@@ -177,14 +177,14 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Mukbang Champion", ja: "大食いチャンピオン" },
     effectsPositive: [
       {
-        en: "消費アイテムによる回復効果は、半径6メートル以内の全プレイヤーに付与される。",
-        ja: "消費アイテムによる回復効果は、半径6メートル以内の全プレイヤーに付与される。",
+        en: "Healing from a consumable item will be transferred to all players in a 6 meter radius.",
+        ja: "回復アイテムからの回復効果が、半径6メートル以内の全てのプレイヤーに転送される。",
       },
     ],
     effectsNegative: [
       {
-        en: "少なくとも一人のプレイヤーに付与された場合、自身の回復量は大幅に減少する。",
-        ja: "少なくとも一人のプレイヤーに付与された場合、自身の回復量は大幅に減少する。",
+        en: "If transferred to at least 1 player, personal healing will be drastically reduced.",
+        ja: "回復効果が1人以上のプレイヤーに転送された場合、自身の回復効果が大幅に減少する。",
       },
     ],
     iconUrl: "",
@@ -261,7 +261,7 @@ export const PERKS: Record<PerkKey, Perk> = {
       },
       {
         en: "Gain a small CREDIT and EXP reward when successfully opening a locked door.",
-        ja: "閉ざされたドアを開けると、少量のクレジットと経験値が得られる。"
+        ja: "閉ざされたドアを開けると、少量のクレジットと経験値が得られる"
       }
     ],
     effectsNegative: [
@@ -279,13 +279,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "First Responder", ja: "第一対応者" },
     effectsPositive: [
       {
-        en: "瀕死状態のプレイヤーを回復する能力を獲得。このアクションには5分のクールダウンがあり、クレジットと経験値が報酬として得られる。",
-        ja: "瀕死状態のプレイヤーを回復する能力を獲得。このアクションには5分のクールダウンがあり、クレジットと経験値が報酬として得られる。"
+        en: "Gain the ability to heal a player in CRITICAL condition. This action has a cooldown of 5 minutes, and rewards you with CREDITS and EXP.",
+        ja: "瀕死状態のプレイヤーを回復させる能力を得る。この行動には5分のクールダウンがあり、クレジットと経験値が得られる"
       }
     ],
     effectsNegative: [
       {
-        en: "全ての非致死ダメージが致死ダメージに変わる。",
+        en: "All non-lethal damage will become lethal.",
         ja: "全ての非致死ダメージが致死ダメージに変わる。"
       }
     ],
@@ -398,14 +398,14 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Deity Swindler", ja: "神を騙す者" },
     effectsPositive: [
       {
-        en: "死のお守りを使用する能力を獲得し、それを破壊することで、最も近いプレイヤーに一時的なパッシブ効果の死のお守りを付与する。",
-        ja: "死のお守りを使用する能力を獲得し、それを破壊することで、最も近いプレイヤーに一時的なパッシブ効果の死のお守りを付与する。"
+        en: "Gain the ability to USE the Deathword, causing it to break, giving the closest player a temporary PASSIVE Deathword effect.",
+        ja: "死のお守りを使用して最も近いプレイヤーに一時的なパッシブの死のお守り効果を与える能力を得る。この行動で死のお守りは破壊される"
       }
     ],
     effectsNegative: [
       {
-        en: "Revival through the Death Amulet is impossible.",
-        ja: "死のお守りによる復活は不可能となる"
+        en: "You can no longer be revived by the Deathword.",
+        ja: "あなたは死のお守りで復活できない"
       }
     ],
     iconUrl: "",
@@ -514,8 +514,8 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Scapegoat", ja: "スケープゴート" },
     effectsPositive: [
       {
-        en: "健康状態かつ他プレイヤーから6メートル以内の場合、そのプレイヤーが受けるダメージは全て非致死ダメージとして自分に転嫁される。",
-        ja: "健康状態かつ他プレイヤーから6メートル以内の場合、そのプレイヤーが受けるダメージは全て非致死ダメージとして自分に転嫁される。"
+        en: "While in SATED condition and within 6 meters of a player, any damage inflicted on them will be transferred to you as non-lethal damage.",
+        ja: "健康状態かつ6メートル以内にプレイヤーがいる場合、そのプレイヤーが受けるダメージが非致死ダメージとしてあなたに転送される"
       }
     ],
     effectsNegative: [],
@@ -617,28 +617,32 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Freaky Doctor", ja: "異常なドクター" },
     effectsPositive: [
       {
-        en: `半径20メートル以内の全プレイヤー:
-        - 軽度のダメージ耐性
-        - 回復量が25%増加
-        - 効果の消耗速度が10%低下
-        - ジェネレーターの給油速度が25%向上する
+        en: `All players within a 20 meter radius:
+        - Gain minor damage resistance.
+        - Receive 25% more healing.
+        - Deplete effects 10% slower.
+        - Fuel Generators 25% faster.
       `,
         ja: `半径20メートル以内の全プレイヤー:
-        - 軽度のダメージ耐性
+        - 少しのダメージ耐性
         - 回復量が25%増加
         - 効果の消耗速度が10%低下
-        - ジェネレーターの給油速度が25%向上する
+        - ジェネレーターの給油速度が25%向上
       `,
       },
+      {
+        en: "Gain a tiny CREDIT and EXP bonus when a Player affected by your Freak completes an Objective.",
+        ja: "あなたの Freak の影響を受けたプレイヤーが目標を達成すると、少量のCREDITとEXPボーナスを獲得する"
+      }
     ],
     effectsNegative: [
       {
-        en: "受ける全ダメージが倍増する。",
-        ja: "受ける全ダメージが倍増する。",
+        en: "All incoming damage is doubled.",
+        ja: "受ける全ダメージが倍増する",
       },
       {
-        en: "移動速度が20%低下する。",
-        ja: "移動速度が20%低下する。"
+        en: "Reduces movement speed by 20%.",
+        ja: "移動速度が20%低下する"
       },
     ],
     iconUrl: "",
