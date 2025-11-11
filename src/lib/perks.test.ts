@@ -1,10 +1,12 @@
 import { PERKS } from "./perkData";
+import { localeCodes } from "./perks";
 
 describe("perkData", () => {
   it("PERKS の全ての項目の name が空でないこと", () => {
-    Object.values(PERKS).forEach((perk) => {
-      expect(perk.name.en).not.toBe("");
-      expect(perk.name.ja).not.toBe("");
+    Object.values(localeCodes).forEach((locale) => {
+      Object.values(PERKS).forEach((perk) => {
+        expect(perk.name[locale]).not.toBe("");
+      });
     });
   });
 
@@ -17,20 +19,22 @@ describe("perkData", () => {
     });
   });
 
-  it("effectsPositive について、各効果の en, ja が空でないこと", () => {
-    Object.values(PERKS).forEach((perk) => {
-      perk.effectsPositive.forEach((effect) => {
-        expect(effect.en).not.toBe("");
-        expect(effect.ja).not.toBe("");
+  it("effectsPositive について、各効果の localizedText がすべて空でないこと", () => {
+    Object.values(localeCodes).forEach((locale) => {
+      Object.values(PERKS).forEach((perk) => {
+        perk.effectsPositive.forEach((effect) => {
+          expect(effect[locale]).not.toBe("");
+        });
       });
     });
   });
 
-  it("effectsNegative について、各効果の en, ja が空でないこと", () => {
-    Object.values(PERKS).forEach((perk) => {
-      perk.effectsNegative.forEach((effect) => {
-        expect(effect.en).not.toBe("");
-        expect(effect.ja).not.toBe("");
+  it("effectsNegative について、各効果の localizedText がすべて空でないこと", () => {
+    Object.values(localeCodes).forEach((locale) => {
+      Object.values(PERKS).forEach((perk) => {
+        perk.effectsNegative.forEach((effect) => {
+          expect(effect[locale]).not.toBe("");
+        });
       });
     });
   });
