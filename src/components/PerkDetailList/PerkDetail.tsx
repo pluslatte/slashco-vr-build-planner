@@ -10,7 +10,7 @@ const PerkDetail = (props: Props) => {
   return (
     <Grid templateColumns="repeat(6, 1fr)" gap={0} alignItems="center">
       <GridItem colSpan={1}>
-        <Box pl={1}>
+        <Box pl={1} pt={2}>
           <PerkIcon imgUrl={props.perk.iconUrl} active={false} size="md" />
         </Box>
       </GridItem>
