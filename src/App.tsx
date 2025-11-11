@@ -7,6 +7,7 @@ import { usePerkSelector } from "./hooks/usePerkSelector";
 import { useSettings } from "./hooks/useSettings";
 import LevelSelector from "./components/LevelSelector";
 import { LuExternalLink } from "react-icons/lu";
+import { localeCodes } from "./lib/perks";
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
@@ -30,12 +31,12 @@ const App = () => {
               />
               <ButtonGroup ml={4} size="sm" attached>
                 <Button
-                  variant={lang === 'ja' ? 'solid' : 'outline'}
-                  onClick={() => setLang('ja')}
+                  variant={lang === localeCodes.ja ? 'solid' : 'outline'}
+                  onClick={() => setLang(localeCodes.ja)}
                 >日本語</Button>
                 <Button
-                  variant={lang === 'en' ? 'solid' : 'outline'}
-                  onClick={() => setLang('en')}
+                  variant={lang === localeCodes.en ? 'solid' : 'outline'}
+                  onClick={() => setLang(localeCodes.en)}
                 >English</Button>
               </ButtonGroup>
             </Box>

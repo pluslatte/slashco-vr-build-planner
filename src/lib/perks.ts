@@ -1,7 +1,9 @@
-export type LocalizedText = {
-  ja: string;
-  en: string;
-};
+export const localeCodes = {
+  ja: 'ja',
+  en: 'en',
+} as const;
+export type Locale = keyof typeof localeCodes;
+export type LocalizedText = Record<Locale, string>;
 
 export interface Perk {
   name: LocalizedText;
@@ -64,5 +66,3 @@ export const PERK_KEY = {
 } as const;
 
 export type PerkKey = keyof typeof PERK_KEY;
-
-export type Locale = 'ja' | 'en';

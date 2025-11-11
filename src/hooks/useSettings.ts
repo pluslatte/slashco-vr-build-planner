@@ -1,3 +1,4 @@
+import { localeCodes, type Locale } from "@/lib/perks";
 import { useState, useEffect } from "react";
 
 const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
@@ -16,17 +17,17 @@ export const useSettings = () => {
         return 30;
     });
 
-    const [lang, setLang] = useState<'en' | 'ja'>(() => {
+    const [lang, setLang] = useState<Locale>(() => {
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
             if (stored) {
                 const parsed = JSON.parse(stored);
-                return parsed.lang || 'ja';
+                return parsed.lang || localeCodes.ja;
             }
         } catch (error) {
             console.error("Failed to load settings from localStorage:", error);
         }
-        return 'ja';
+        return localeCodes.ja;
     });
 
     useEffect(() => {

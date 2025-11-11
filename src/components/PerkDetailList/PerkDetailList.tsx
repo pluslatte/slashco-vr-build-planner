@@ -2,11 +2,11 @@ import { PERKS } from "@/lib/perkData";
 import { Box, Text } from "@chakra-ui/react";
 import React from "react";
 import PerkDetail from "./PerkDetail";
-import type { PerkKey } from "@/lib/perks";
+import type { Locale, PerkKey } from "@/lib/perks";
 
 interface Props {
   selectedKeys: Array<PerkKey>;
-  lang: 'en' | 'ja';
+  lang: Locale;
 };
 const PerkDetailList = (props: Props) => {
   return (

@@ -1,11 +1,11 @@
-import { PERK_KEY, type PerkKey } from "@/lib/perks";
+import { PERK_KEY, type Locale, type PerkKey } from "@/lib/perks";
 import { Grid } from "@chakra-ui/react";
 import PerkEntry from "./PerkEntry/PerkEntry";
 
 interface Props {
   selectedKeys: Array<PerkKey>;
   onTogglePerk: (key: PerkKey) => void;
-  lang: 'en' | 'ja';
+  lang: Locale;
 };
 const PerkList = (props: Props) => (
   <Grid templateColumns="repeat(6, 0fr)" gap="6">

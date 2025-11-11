@@ -1,10 +1,10 @@
-import type { Perk } from "@/lib/perks";
+import type { Locale, Perk } from "@/lib/perks";
 import { Box, Grid, GridItem, Text } from "@chakra-ui/react";
 import PerkIcon from "../PerkEntry/PerkIcon";
 
 interface Props {
   perk: Perk;
-  lang: 'en' | 'ja';
+  lang: Locale;
 }
 const PerkDetail = (props: Props) => {
   return (

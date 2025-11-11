@@ -1,4 +1,4 @@
-import type { Perk, PerkKey } from "@/lib/perks";
+import type { Locale, Perk, PerkKey } from "@/lib/perks";
 import PerkIcon from "./PerkIcon";
 import { Box, Circle, Float } from "@chakra-ui/react";
 import { Tooltip } from "@/components/ui/tooltip";
@@ -8,7 +8,7 @@ interface Props {
   perkKey: PerkKey;
   isSelected: boolean;
   onToggle: (key: PerkKey) => void;
-  lang: 'en' | 'ja';
+  lang: Locale;
 }
 const PerkEntry = (props: Props) => {
   const perk: Perk = PERKS[props.perkKey];
