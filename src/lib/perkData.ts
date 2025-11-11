@@ -52,7 +52,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The footsteps of Slashers are louder to you.",
-        ja: "Slasherの足音がより大きく聞こえる"
+        ja: "スラッシャーの足音がより大きく聞こえる"
       }
     ],
     effectsNegative: [],
@@ -178,7 +178,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Healing from a consumable item will be transferred to all players in a 6 meter radius.",
-        ja: "回復アイテムからの回復効果が、半径6メートル以内の全てのプレイヤーに転送される",
+        ja: "回復アイテムからの回復効果が、半径6メートル以内のすべてのプレイヤーに転送される",
       },
     ],
     effectsNegative: [
@@ -286,7 +286,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All non-lethal damage will become lethal.",
-        ja: "全ての非致死ダメージが致死ダメージに変わる"
+        ja: "すべての非致死ダメージが致死ダメージに変わる"
       }
     ],
     iconUrl: "perk_firstresponder.webp",
@@ -418,7 +418,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Slashers cannot spot you as easily.",
-        ja: "Slasherに見つかりにくくなる"
+        ja: "スラッシャーに見つかりにくくなる"
       }
     ],
     effectsNegative: [],
@@ -450,7 +450,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "Increases overall movement speed for the first 5 minutes of the round.",
-        ja: "ラウンド開始から5分間、全ての行動速度が上がる"
+        ja: "ラウンド開始から5分間、すべての行動速度が上がる"
       }
     ],
     effectsNegative: [
@@ -498,7 +498,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All healing is drastically reduced.",
-        ja: "全ての回復効果が大幅に減少する"
+        ja: "すべての回復効果が大幅に減少する"
       },
       {
         en: "The ability is inactive once the helicopter is set to arrive.",
@@ -533,7 +533,7 @@ export const PERKS: Record<PerkKey, Perk> = {
       },
       {
         en: "Every 4 minutes you can take a sip of Fuel for a short boost to overall movement speed.",
-        ja: "4分ごとに燃料を一口飲むことで、全ての行動速度が短時間上昇する"
+        ja: "4分ごとに燃料を一口飲むことで、すべての行動速度が短時間上昇する"
       }
     ],
     effectsNegative: [],
@@ -553,7 +553,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All incoming damage is increased by 50%.",
-        ja: "すべての被ダメージが50%増加する"
+        ja: "すべての被ダメージが50％増加する"
       }
     ],
     iconUrl: "perk_zyzz.png",
@@ -585,13 +585,13 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "All incoming damage is reduced by 50%.",
-        ja: "すべての被ダメージが50%減少する"
+        ja: "すべての被ダメージが50％減少する"
       }
     ],
     effectsNegative: [
       {
         en: "The loudness of your footsteps is increased by 50%.",
-        ja: "自身の足音の大きさが50%増加する"
+        ja: "自身の足音の大きさが50％増加する"
       }
     ],
     iconUrl: "perk_lead.png",
@@ -618,19 +618,19 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "All players within a 20 meter radius: Gain minor damage resistance.",
-        ja: "半径20メートル以内の全プレイヤー: 少しのダメージ耐性"
+        ja: "半径20メートル以内のすべてのプレイヤー: 少しのダメージ耐性"
       },
       {
         en: "All players within a 20 meter radius: Receive 25% more healing.",
-        ja: "半径20メートル以内の全プレイヤー: 回復量が25%増加"
+        ja: "半径20メートル以内のすべてのプレイヤー: 回復量が25％増加"
       },
       {
         en: "All players within a 20 meter radius: Deplete effects 10% slower.",
-        ja: "半径20メートル以内の全プレイヤー: 効果の消耗速度が10%低下"
+        ja: "半径20メートル以内のすべてのプレイヤー: 効果の消耗速度が10％低下"
       },
       {
         en: "All players within a 20 meter radius: Fuel Generators 25% faster.",
-        ja: "半径20メートル以内の全プレイヤー: ジェネレーターの給油速度が25%向上"
+        ja: "半径20メートル以内のすべてのプレイヤー: ジェネレーターの給油速度が25％向上"
       },
       {
         en: "Gain a tiny CREDIT and EXP bonus when a Player affected by your Freak completes an Objective.",
@@ -640,11 +640,11 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsNegative: [
       {
         en: "All incoming damage is doubled.",
-        ja: "受ける全ダメージが倍増する"
+        ja: "受けるすべてのダメージが倍増する"
       },
       {
         en: "Reduces movement speed by 20%.",
-        ja: "移動速度が20%低下する"
+        ja: "移動速度が20％低下する"
       }
     ],
     iconUrl: "perk_freaky.webp",
