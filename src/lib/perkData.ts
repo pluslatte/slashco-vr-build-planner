@@ -617,18 +617,20 @@ export const PERKS: Record<PerkKey, Perk> = {
     name: { en: "Freaky Doctor", ja: "異常なドクター" },
     effectsPositive: [
       {
-        en: `All players within a 20 meter radius:
-        - Gain minor damage resistance.
-        - Receive 25% more healing.
-        - Deplete effects 10% slower.
-        - Fuel Generators 25% faster.
-      `,
-        ja: `半径20メートル以内の全プレイヤー:
-        - 少しのダメージ耐性
-        - 回復量が25%増加
-        - 効果の消耗速度が10%低下
-        - ジェネレーターの給油速度が25%向上
-      `,
+        en: "All players within a 20 meter radius: Gain minor damage resistance.",
+        ja: "半径20メートル以内の全プレイヤー: 少しのダメージ耐性"
+      },
+      {
+        en: "All players within a 20 meter radius: Receive 25% more healing.",
+        ja: "半径20メートル以内の全プレイヤー: 回復量が25%増加"
+      },
+      {
+        en: "All players within a 20 meter radius: Deplete effects 10% slower.",
+        ja: "半径20メートル以内の全プレイヤー: 効果の消耗速度が10%低下"
+      },
+      {
+        en: "All players within a 20 meter radius: Fuel Generators 25% faster.",
+        ja: "半径20メートル以内の全プレイヤー: ジェネレーターの給油速度が25%向上"
       },
       {
         en: "Gain a tiny CREDIT and EXP bonus when a Player affected by your Freak completes an Objective.",
