@@ -8,7 +8,7 @@ interface Props {
   lang: Locale;
 };
 const PerkList = (props: Props) => (
-  <Grid templateColumns="repeat(6, 0fr)" gap="6">
+  <Grid templateColumns="repeat(6, 0fr)" gap="6" justifyContent="center">
     {
       Object.entries(PERK_KEY).map(([key, perkKey]) => (
         <PerkEntry
