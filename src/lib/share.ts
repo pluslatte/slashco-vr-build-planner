@@ -10,7 +10,8 @@ export interface SharedBuild {
 export const DEFAULT_LEVEL = 30;
 const MAX_LEVEL = 100;
 
-const isPerkKey = (value: string): value is PerkKey => value in PERKS;
+const PERK_KEYS = new Set<PerkKey>(Object.keys(PERKS) as Array<PerkKey>);
+const isPerkKey = (value: string): value is PerkKey => PERK_KEYS.has(value as PerkKey);
 const isLocale = (value: string | null): value is Locale =>
   value === localeCodes.en || value === localeCodes.ja;
 

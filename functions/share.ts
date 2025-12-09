@@ -27,7 +27,9 @@ export const onRequest = async ({ request }: { request: Request }) => {
   const appUrl = `${origin}/?${params.toString()}`;
   const imageUrl = `${origin}/api/og?${params.toString()}`;
 
-  const perkNames = parsed.perks.map((key) => PERKS[key]?.name[parsed.lang] ?? key);
+  const perkNames = parsed.perks
+    .filter((key) => PERKS[key])
+    .map((key) => PERKS[key]!.name[parsed.lang]);
   const perkSummary = perkNames.slice(0, 6).join(", ");
 
   const title = "SlashCo VR Build Planner";

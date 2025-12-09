@@ -22,8 +22,9 @@ export const onRequest = async ({ request }: { request: Request }) => {
     lang: localeCodes.ja,
   };
 
-  const perkNames = build.perks.map((key) => PERKS[key]?.name[build.lang] ?? key);
-  const ppUsed = build.perks.reduce((total, key) => total + (PERKS[key]?.pp ?? 0), 0);
+  const validPerks = build.perks.filter((key) => PERKS[key]);
+  const perkNames = validPerks.map((key) => PERKS[key]!.name[build.lang]);
+  const ppUsed = validPerks.reduce((total, key) => total + PERKS[key]!.pp, 0);
   const maxPp = Math.min(Math.floor(build.level / 2), 15);
 
   const headline = build.lang === localeCodes.ja
