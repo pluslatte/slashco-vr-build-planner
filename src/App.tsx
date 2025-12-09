@@ -59,6 +59,10 @@ const App = () => {
     } catch (error) {
       console.error("Failed to copy share link:", error);
       setCopyStatus("error");
+      if (copyResetRef.current) {
+        clearTimeout(copyResetRef.current);
+      }
+      copyResetRef.current = setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
     }
   };
 
@@ -99,9 +103,14 @@ const App = () => {
           <Button
             variant="outline"
             size="sm"
-            leftIcon={<LuShare />}
             onClick={handleCopyShare}
+            aria-label={
+              copyStatus === "copied"
+                ? (lang === localeCodes.en ? "Link copied" : "リンクをコピーしました")
+                : undefined
+            }
           >
+            <Box as={LuShare} aria-hidden="true" display="inline" mr={2} />
             {lang === localeCodes.en ? "Copy share link" : "共有リンクをコピー"}
           </Button>
           {shareUrl && (
@@ -112,7 +121,12 @@ const App = () => {
               </Link>
             </Text>
           )}
-          <Text mt={1} fontSize="sm" color={copyStatus === "error" ? "red.300" : "gray.400"}>
+          <Text
+            mt={1}
+            fontSize="sm"
+            color={copyStatus === "error" ? "red.300" : "gray.400"}
+            aria-live="polite"
+          >
             {shareStatusMessage}
           </Text>
           <Box h={4} />

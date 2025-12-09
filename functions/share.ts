@@ -1,18 +1,7 @@
 import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams } from "../src/lib/share";
 import { PERKS } from "../src/lib/perkData";
 import { localeCodes } from "../src/lib/perks";
-
-const escapeHtml = (value: string) =>
-  value.replace(/[&<>"']/g, (char) => {
-    switch (char) {
-      case "&": return "&amp;";
-      case "<": return "&lt;";
-      case ">": return "&gt;";
-      case '"': return "&quot;";
-      case "'": return "&#39;";
-      default: return char;
-    }
-  });
+import { escapeHtml } from "./utils/escape";
 
 export const onRequest = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);

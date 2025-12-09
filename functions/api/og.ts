@@ -1,18 +1,7 @@
 import { PERKS } from "../../src/lib/perkData";
 import { localeCodes, type Perk } from "../../src/lib/perks";
 import { DEFAULT_LEVEL, parseBuildFromSearchParams } from "../../src/lib/share";
-
-const escapeXml = (value: string) =>
-  value.replace(/[&<>"']/g, (char) => {
-    switch (char) {
-      case "&": return "&amp;";
-      case "<": return "&lt;";
-      case ">": return "&gt;";
-      case '"': return "&quot;";
-      case "'": return "&#39;";
-      default: return char;
-    }
-  });
+import { escapeHtml } from "../utils/escape";
 
 export const onRequest = async ({ request }: { request: Request }) => {
   const url = new URL(request.url);
@@ -50,11 +39,11 @@ export const onRequest = async ({ request }: { request: Request }) => {
 
   const perkLines = visiblePerks.map((text, index) => {
     const y = 240 + index * 36;
-    return `<text x="64" y="${y}" font-size="28" fill="#e2e8f0">${escapeXml(text)}</text>`;
+    return `<text x="64" y="${y}" font-size="28" font-family="sans-serif" fill="#e2e8f0">${escapeHtml(text)}</text>`;
   }).join("");
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
-    <title>${escapeXml(`${headline} - ${summaryLine}`)}</title>
+    <title>${escapeHtml(`${headline} - ${summaryLine}`)}</title>
     <defs>
       <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
         <stop offset="0%" stop-color="#0f172a" />
@@ -62,8 +51,8 @@ export const onRequest = async ({ request }: { request: Request }) => {
       </linearGradient>
     </defs>
     <rect width="1200" height="630" rx="24" fill="url(#bg)" />
-    <text x="64" y="120" font-size="46" font-weight="700" fill="#f8fafc">${escapeXml(headline)}</text>
-    <text x="64" y="170" font-size="30" fill="#a5b4fc">${escapeXml(summaryLine)}</text>
+    <text x="64" y="120" font-size="46" font-weight="700" font-family="sans-serif" fill="#f8fafc">${escapeHtml(headline)}</text>
+    <text x="64" y="170" font-size="30" font-family="sans-serif" fill="#a5b4fc">${escapeHtml(summaryLine)}</text>
     ${perkLines}
   </svg>`;
 

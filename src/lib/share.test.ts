@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams } from "./share";
+import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams, sanitizePerkKeys } from "./share";
 import { localeCodes, PERK_KEY, type PerkKey } from "./perks";
 
 describe("share utilities", () => {
@@ -12,6 +12,18 @@ describe("share utilities", () => {
 
     expect(params.get("perks")).toBe("MECHANIC,MECHANIC_3");
     expect(params.get("level")).toBe("100");
+    expect(params.get("lang")).toBe(localeCodes.en);
+  });
+
+  it("buildShareSearchParams omits perks param when empty", () => {
+    const params = buildShareSearchParams({
+      perks: [],
+      level: 30,
+      lang: localeCodes.en,
+    });
+
+    expect(params.has("perks")).toBe(false);
+    expect(params.get("level")).toBe("30");
     expect(params.get("lang")).toBe(localeCodes.en);
   });
 
@@ -39,5 +51,10 @@ describe("share utilities", () => {
     expect(parsed?.perks).toEqual([]);
     expect(parsed?.level).toBe(DEFAULT_LEVEL);
     expect(parsed?.lang).toBe(localeCodes.ja);
+  });
+
+  it("sanitizePerkKeys removes duplicates and invalid keys", () => {
+    const result = sanitizePerkKeys(["MECHANIC", "INVALID", "MECHANIC", "HEALTHY"]);
+    expect(result).toEqual([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]);
   });
 });

@@ -5,10 +5,11 @@ import { DEFAULT_LEVEL, getBuildFromCurrentUrl } from "@/lib/share";
 const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
 
 export const useSettings = () => {
+    const urlBuild = getBuildFromCurrentUrl();
+
     const [level, setLevel] = useState<number>(() => {
-        const fromUrl = getBuildFromCurrentUrl();
-        if (fromUrl) {
-            return fromUrl.level;
+        if (urlBuild) {
+            return urlBuild.level;
         }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
@@ -23,9 +24,8 @@ export const useSettings = () => {
     });
 
     const [lang, setLang] = useState<Locale>(() => {
-        const fromUrl = getBuildFromCurrentUrl();
-        if (fromUrl) {
-            return fromUrl.lang;
+        if (urlBuild) {
+            return urlBuild.lang;
         }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
