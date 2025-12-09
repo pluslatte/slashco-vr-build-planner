@@ -30,8 +30,8 @@ export const useShareLink = ({ selectedKeys, level, lang }: UseShareLinkProps) =
                 : "コピーに失敗しました。手動でリンクを選択してコピーしてください。";
         }
         return lang === localeCodes.en
-            ? "Open the link to view your perks with an auto-generated OGP image."
-            : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。";
+            ? "Open the link to view your perks. Share it with others!"
+            : "リンクを開くと選択したパーク構成が表示され、シェアできます。";
     }, [copyStatus, lang]);
 
     useEffect(() => {
