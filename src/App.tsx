@@ -37,10 +37,12 @@ const App = () => {
       : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。";
   }, [copyStatus, lang]);
 
-  useEffect(() => () => {
-    if (copyResetRef.current) {
-      clearTimeout(copyResetRef.current);
-    }
+  useEffect(() => {
+    return () => {
+      if (copyResetRef.current) {
+        clearTimeout(copyResetRef.current);
+      }
+    };
   }, []);
 
   const handleCopyShare = async () => {
