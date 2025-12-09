@@ -24,7 +24,7 @@ export const onRequest = async ({ request }: { request: Request }) => {
 
   const validPerks = build.perks
     .map((key) => PERKS[key])
-    .filter((perk): perk is Perk => Boolean(perk));
+    .filter((perk): perk is Perk => Boolean(perk?.name?.[build.lang]) && typeof perk?.pp === "number");
   const perkNames = validPerks.map((perk) => perk.name[build.lang]);
   const ppUsed = validPerks.reduce((total, perk) => total + perk.pp, 0);
   const maxPp = Math.min(Math.floor(build.level / 2), 15);

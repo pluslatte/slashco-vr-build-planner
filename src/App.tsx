@@ -17,7 +17,7 @@ const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
-  const copyResetRef = useRef<number | null>(null);
+  const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const shareUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
@@ -55,7 +55,7 @@ const App = () => {
       if (copyResetRef.current) {
         clearTimeout(copyResetRef.current);
       }
-      copyResetRef.current = window.setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
+      copyResetRef.current = setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
     } catch (error) {
       console.error("Failed to copy share link:", error);
       setCopyStatus("error");
