@@ -1,4 +1,3 @@
-import { useEffect, useMemo, useRef, useState } from "react";
 import { Box, Container, Heading, Link, Text, ButtonGroup, Button, SimpleGrid } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
@@ -6,65 +5,15 @@ import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
 import { useSettings } from "./hooks/useSettings";
+import { useShareLink } from "./hooks/useShareLink";
 import LevelSelector from "./components/LevelSelector";
 import { LuExternalLink, LuShare } from "react-icons/lu";
 import { localeCodes } from "./lib/perks";
-import { buildShareSearchParams } from "./lib/share";
-
-const COPY_STATUS_RESET_DELAY = 2000;
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
-  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
-  const copyResetRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const shareUrl = useMemo(() => {
-    if (typeof window === "undefined") return "";
-    const params = buildShareSearchParams({ perks: selectedKeys, level, lang });
-    return `${window.location.origin}/share?${params.toString()}`;
-  }, [selectedKeys, level, lang]);
-
-  const shareStatusMessage = useMemo(() => {
-    if (copyStatus === "copied") {
-      return lang === localeCodes.en ? "Copied!" : "コピーしました";
-    }
-    if (copyStatus === "error") {
-      return lang === localeCodes.en
-        ? "Failed to copy. Please copy the link manually."
-        : "コピーに失敗しました。手動でリンクを選択してコピーしてください。";
-    }
-    return lang === localeCodes.en
-      ? "Open the link to view your perks with an auto-generated OGP image."
-      : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。";
-  }, [copyStatus, lang]);
-
-  useEffect(() => {
-    return () => {
-      if (copyResetRef.current) {
-        clearTimeout(copyResetRef.current);
-      }
-    };
-  }, []);
-
-  const handleCopyShare = async () => {
-    if (!shareUrl) return;
-    try {
-      await navigator.clipboard.writeText(shareUrl);
-      setCopyStatus("copied");
-      if (copyResetRef.current) {
-        clearTimeout(copyResetRef.current);
-      }
-      copyResetRef.current = setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
-    } catch (error) {
-      console.error("Failed to copy share link:", error);
-      setCopyStatus("error");
-      if (copyResetRef.current) {
-        clearTimeout(copyResetRef.current);
-      }
-      copyResetRef.current = setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
-    }
-  };
+  const { copyStatus, shareStatusMessage, handleCopyShare } = useShareLink({ selectedKeys, level, lang });
 
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
@@ -96,7 +45,7 @@ const App = () => {
             selectedKeys={selectedKeys}
             onTogglePerk={onTogglePerk}
             lang={lang}
-           />
+          />
           <Box h={4} />
           <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
           <Box h={4} />
