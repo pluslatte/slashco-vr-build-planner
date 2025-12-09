@@ -74,7 +74,7 @@ const App = () => {
             leftIcon={<LuShare />}
             onClick={handleCopyShare}
           >
-            共有リンクをコピー
+            {lang === localeCodes.en ? "Copy share link" : "共有リンクをコピー"}
           </Button>
           {shareUrl && (
             <Text mt={2} fontSize="sm" wordBreak="break-all">
@@ -85,10 +85,14 @@ const App = () => {
           )}
           <Text mt={1} fontSize="sm" color={copyStatus === "error" ? "red.300" : "gray.400"}>
             {copyStatus === "copied"
-              ? "コピーしました"
+              ? (lang === localeCodes.en ? "Copied!" : "コピーしました")
               : copyStatus === "error"
-                ? "コピーに失敗しました。手動でリンクを選択してコピーしてください。"
-                : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。"}
+                ? (lang === localeCodes.en
+                  ? "Failed to copy. Please copy the link manually."
+                  : "コピーに失敗しました。手動でリンクを選択してコピーしてください。")
+                : (lang === localeCodes.en
+                  ? "Open the link to view your perks with an auto-generated OGP image."
+                  : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。")}
           </Text>
           <Box h={4} />
           <Link pr={2} color="gray.500" href="https://virtualkemomimi.net/@pluslatte" target="_blank" rel="noopener noreferrer">連絡先: pluslatte<LuExternalLink /></Link>

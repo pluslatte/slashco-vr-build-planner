@@ -11,6 +11,8 @@ export const DEFAULT_LEVEL = 30;
 const MAX_LEVEL = 100;
 
 const isPerkKey = (value: string): value is PerkKey => value in PERKS;
+const isLocale = (value: string | null): value is Locale =>
+  value === localeCodes.en || value === localeCodes.ja;
 
 const clampLevel = (level: number) =>
   Math.min(Math.max(0, Number.isFinite(level) ? Math.trunc(level) : 0), MAX_LEVEL);
@@ -41,7 +43,7 @@ export const parseBuildFromSearchParams = (params: URLSearchParams): SharedBuild
 
   const perks = perksParam ? sanitizePerkKeys(perksParam.split(",")) : [];
   const level = clampLevel(levelParam ? parseInt(levelParam, 10) : DEFAULT_LEVEL);
-  const lang = langParam === localeCodes.en ? localeCodes.en : localeCodes.ja;
+  const lang = isLocale(langParam) ? langParam : localeCodes.ja;
 
   return { perks, level, lang };
 };
