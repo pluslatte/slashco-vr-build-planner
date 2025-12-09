@@ -113,14 +113,6 @@ const App = () => {
             <Box as={LuShare} aria-hidden="true" display="inline" mr={2} />
             {lang === localeCodes.en ? "Copy share link" : "共有リンクをコピー"}
           </Button>
-          {shareUrl && (
-            <Text mt={2} fontSize="sm" wordBreak="break-all">
-              <Link href={shareUrl} color="blue.200" target="_blank" rel="noopener noreferrer">
-                {shareUrl}
-                <Box as={LuExternalLink} aria-hidden="true" display="inline" ml={1} />
-              </Link>
-            </Text>
-          )}
           <Text
             mt={1}
             fontSize="sm"
