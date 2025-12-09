@@ -12,8 +12,19 @@ const MAX_LEVEL = 100;
 
 const PERK_KEYS = new Set<PerkKey>(Object.keys(PERKS) as Array<PerkKey>);
 const isPerkKey = (value: string): value is PerkKey => PERK_KEYS.has(value as PerkKey);
+const localeValues = Object.values(localeCodes);
 const isLocale = (value: string | null): value is Locale =>
-  Object.values(localeCodes).includes((value ?? "") as Locale);
+  localeValues.some((locale) => locale === value);
+
+export const getBuildFromCurrentUrl = () => {
+  try {
+    if (typeof window === "undefined") return null;
+    return parseBuildFromSearchParams(new URLSearchParams(window.location.search));
+  } catch (error) {
+    console.error("Failed to load build from URL:", error);
+    return null;
+  }
+};
 
 const clampLevel = (level: number) =>
   Math.min(Math.max(0, Number.isFinite(level) ? Math.trunc(level) : 0), MAX_LEVEL);

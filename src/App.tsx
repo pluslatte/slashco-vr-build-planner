@@ -11,6 +11,8 @@ import { LuExternalLink, LuShare } from "react-icons/lu";
 import { localeCodes } from "./lib/perks";
 import { buildShareSearchParams } from "./lib/share";
 
+const COPY_STATUS_RESET_DELAY = 2000;
+
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
@@ -53,7 +55,7 @@ const App = () => {
       if (copyResetRef.current) {
         clearTimeout(copyResetRef.current);
       }
-      copyResetRef.current = window.setTimeout(() => setCopyStatus("idle"), 2000);
+      copyResetRef.current = window.setTimeout(() => setCopyStatus("idle"), COPY_STATUS_RESET_DELAY);
     } catch (error) {
       console.error("Failed to copy share link:", error);
       setCopyStatus("error");

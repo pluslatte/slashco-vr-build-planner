@@ -1,5 +1,5 @@
 import { PERKS } from "../../src/lib/perkData";
-import { localeCodes } from "../../src/lib/perks";
+import { localeCodes, type Perk } from "../../src/lib/perks";
 import { DEFAULT_LEVEL, parseBuildFromSearchParams } from "../../src/lib/share";
 
 const escapeXml = (value: string) =>
@@ -22,9 +22,11 @@ export const onRequest = async ({ request }: { request: Request }) => {
     lang: localeCodes.ja,
   };
 
-  const validPerks = build.perks.filter((key) => PERKS[key]);
-  const perkNames = validPerks.map((key) => PERKS[key]!.name[build.lang]);
-  const ppUsed = validPerks.reduce((total, key) => total + PERKS[key]!.pp, 0);
+  const validPerks = build.perks
+    .map((key) => PERKS[key])
+    .filter((perk): perk is Perk => Boolean(perk));
+  const perkNames = validPerks.map((perk) => perk.name[build.lang]);
+  const ppUsed = validPerks.reduce((total, perk) => total + perk.pp, 0);
   const maxPp = Math.min(Math.floor(build.level / 2), 15);
 
   const headline = build.lang === localeCodes.ja

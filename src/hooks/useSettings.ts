@@ -1,21 +1,14 @@
 import { localeCodes, type Locale } from "@/lib/perks";
 import { useState, useEffect } from "react";
-import { DEFAULT_LEVEL, parseBuildFromSearchParams } from "@/lib/share";
+import { DEFAULT_LEVEL, getBuildFromCurrentUrl } from "@/lib/share";
 
 const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
 
 export const useSettings = () => {
     const [level, setLevel] = useState<number>(() => {
-        try {
-            if (typeof window !== "undefined") {
-                const params = new URLSearchParams(window.location.search);
-                const parsed = parseBuildFromSearchParams(params);
-                if (parsed) {
-                    return parsed.level;
-                }
-            }
-        } catch (error) {
-            console.error("Failed to load level from URL:", error);
+        const fromUrl = getBuildFromCurrentUrl();
+        if (fromUrl) {
+            return fromUrl.level;
         }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
@@ -30,16 +23,9 @@ export const useSettings = () => {
     });
 
     const [lang, setLang] = useState<Locale>(() => {
-        try {
-            if (typeof window !== "undefined") {
-                const params = new URLSearchParams(window.location.search);
-                const parsed = parseBuildFromSearchParams(params);
-                if (parsed) {
-                    return parsed.lang;
-                }
-            }
-        } catch (error) {
-            console.error("Failed to load lang from URL:", error);
+        const fromUrl = getBuildFromCurrentUrl();
+        if (fromUrl) {
+            return fromUrl.lang;
         }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);

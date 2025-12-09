@@ -28,8 +28,8 @@ export const onRequest = async ({ request }: { request: Request }) => {
   const imageUrl = `${origin}/api/og?${params.toString()}`;
 
   const perkNames = parsed.perks
-    .filter((key) => PERKS[key])
-    .map((key) => PERKS[key]!.name[parsed.lang]);
+    .map((key) => PERKS[key]?.name[parsed.lang])
+    .filter((name): name is string => Boolean(name));
   const perkSummary = perkNames.slice(0, 6).join(", ");
 
   const title = "SlashCo VR Build Planner";
