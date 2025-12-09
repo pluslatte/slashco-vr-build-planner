@@ -22,6 +22,20 @@ const App = () => {
     return `${window.location.origin}/share?${params.toString()}`;
   }, [selectedKeys, level, lang]);
 
+  const shareStatusMessage = useMemo(() => {
+    if (copyStatus === "copied") {
+      return lang === localeCodes.en ? "Copied!" : "コピーしました";
+    }
+    if (copyStatus === "error") {
+      return lang === localeCodes.en
+        ? "Failed to copy. Please copy the link manually."
+        : "コピーに失敗しました。手動でリンクを選択してコピーしてください。";
+    }
+    return lang === localeCodes.en
+      ? "Open the link to view your perks with an auto-generated OGP image."
+      : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。";
+  }, [copyStatus, lang]);
+
   const handleCopyShare = async () => {
     if (!shareUrl) return;
     try {
@@ -85,15 +99,7 @@ const App = () => {
             </Text>
           )}
           <Text mt={1} fontSize="sm" color={copyStatus === "error" ? "red.300" : "gray.400"}>
-            {copyStatus === "copied"
-              ? (lang === localeCodes.en ? "Copied!" : "コピーしました")
-              : copyStatus === "error"
-                ? (lang === localeCodes.en
-                  ? "Failed to copy. Please copy the link manually."
-                  : "コピーに失敗しました。手動でリンクを選択してコピーしてください。")
-                : (lang === localeCodes.en
-                  ? "Open the link to view your perks with an auto-generated OGP image."
-                  : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。")}
+            {shareStatusMessage}
           </Text>
           <Box h={4} />
           <Link pr={2} color="gray.500" href="https://virtualkemomimi.net/@pluslatte" target="_blank" rel="noopener noreferrer">連絡先: pluslatte<LuExternalLink /></Link>

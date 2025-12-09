@@ -35,7 +35,9 @@ export const onRequest = async ({ request }: { request: Request }) => {
   const title = "SlashCo VR Build Planner";
   const description = perkSummary
     ? `Lv.${parsed.level} | ${perkSummary}`
-    : `Lv.${parsed.level} のパーク構成`;
+    : (parsed.lang === localeCodes.en
+      ? `Lv.${parsed.level} build`
+      : `Lv.${parsed.level} のパーク構成`);
 
   const html = `<!doctype html>
 <html lang="${parsed.lang}">
