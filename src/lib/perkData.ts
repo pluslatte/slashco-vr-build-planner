@@ -566,7 +566,7 @@ export const PERKS: Record<PerkKey, Perk> = {
     effectsPositive: [
       {
         en: "The after-effect of Balkan Boost no longer cripples you.",
-        ja: "バルカン・ブーストの効果終了後に動きが鈍くならなくなる"
+        ja: "バルカン・ブーストの効果終了後にしんどくならなくなる"
       }
     ],
     effectsNegative: [
