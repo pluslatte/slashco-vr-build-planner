@@ -1,3 +1,4 @@
+import { useMemo, useState } from "react";
 import { Box, Container, Heading, Link, Text, ButtonGroup, Button, SimpleGrid } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
@@ -6,12 +7,32 @@ import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
 import { useSettings } from "./hooks/useSettings";
 import LevelSelector from "./components/LevelSelector";
-import { LuExternalLink } from "react-icons/lu";
+import { LuExternalLink, LuShare } from "react-icons/lu";
 import { localeCodes } from "./lib/perks";
+import { buildShareSearchParams } from "./lib/share";
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
+  const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+
+  const shareUrl = useMemo(() => {
+    if (typeof window === "undefined") return "";
+    const params = buildShareSearchParams({ perks: selectedKeys, level, lang });
+    return `${window.location.origin}/share?${params.toString()}`;
+  }, [selectedKeys, level, lang]);
+
+  const handleCopyShare = async () => {
+    if (!shareUrl) return;
+    try {
+      await navigator.clipboard.writeText(shareUrl);
+      setCopyStatus("copied");
+      setTimeout(() => setCopyStatus("idle"), 2000);
+    } catch (error) {
+      console.error("Failed to copy share link:", error);
+      setCopyStatus("error");
+    }
+  };
 
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
@@ -43,9 +64,32 @@ const App = () => {
             selectedKeys={selectedKeys}
             onTogglePerk={onTogglePerk}
             lang={lang}
-          />
+           />
           <Box h={4} />
           <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
+          <Box h={4} />
+          <Button
+            variant="outline"
+            size="sm"
+            leftIcon={<LuShare />}
+            onClick={handleCopyShare}
+          >
+            共有リンクをコピー
+          </Button>
+          {shareUrl && (
+            <Text mt={2} fontSize="sm" wordBreak="break-all">
+              <Link href={shareUrl} color="blue.200" target="_blank" rel="noopener noreferrer">
+                {shareUrl}<LuExternalLink />
+              </Link>
+            </Text>
+          )}
+          <Text mt={1} fontSize="sm" color={copyStatus === "error" ? "red.300" : "gray.400"}>
+            {copyStatus === "copied"
+              ? "コピーしました"
+              : copyStatus === "error"
+                ? "コピーに失敗しました。手動でリンクを選択してコピーしてください。"
+                : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。"}
+          </Text>
           <Box h={4} />
           <Link pr={2} color="gray.500" href="https://virtualkemomimi.net/@pluslatte" target="_blank" rel="noopener noreferrer">連絡先: pluslatte<LuExternalLink /></Link>
           <Text color="gray.500">パーク画像は以下のサイトより。翻訳は不正確かもしれません。</Text>
