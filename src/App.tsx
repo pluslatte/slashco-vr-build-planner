@@ -79,7 +79,8 @@ const App = () => {
           {shareUrl && (
             <Text mt={2} fontSize="sm" wordBreak="break-all">
               <Link href={shareUrl} color="blue.200" target="_blank" rel="noopener noreferrer">
-                {shareUrl}<LuExternalLink />
+                {shareUrl}
+                <Box as={LuExternalLink} aria-hidden="true" display="inline" ml={1} />
               </Link>
             </Text>
           )}
