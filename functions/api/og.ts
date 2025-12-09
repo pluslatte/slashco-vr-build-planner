@@ -52,6 +52,7 @@ export const onRequest = async ({ request }: { request: Request }) => {
   }).join("");
 
   const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img">
+    <title>${escapeXml(`${headline} - ${summaryLine}`)}</title>
     <defs>
       <linearGradient id="bg" x1="0%" x2="100%" y1="0%" y2="100%">
         <stop offset="0%" stop-color="#0f172a" />

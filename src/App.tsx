@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Box, Container, Heading, Link, Text, ButtonGroup, Button, SimpleGrid } from "@chakra-ui/react"
 import PerkList from "./components/PerkList"
 import PpGauge from "./components/PpGauge";
@@ -15,6 +15,7 @@ const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
   const [copyStatus, setCopyStatus] = useState<"idle" | "copied" | "error">("idle");
+  const copyResetRef = useRef<number | null>(null);
 
   const shareUrl = useMemo(() => {
     if (typeof window === "undefined") return "";
@@ -36,12 +37,21 @@ const App = () => {
       : "リンクを開くと選択したパーク構成が表示され、OGP画像としてシェアできます。";
   }, [copyStatus, lang]);
 
+  useEffect(() => () => {
+    if (copyResetRef.current) {
+      clearTimeout(copyResetRef.current);
+    }
+  }, []);
+
   const handleCopyShare = async () => {
     if (!shareUrl) return;
     try {
       await navigator.clipboard.writeText(shareUrl);
       setCopyStatus("copied");
-      setTimeout(() => setCopyStatus("idle"), 2000);
+      if (copyResetRef.current) {
+        clearTimeout(copyResetRef.current);
+      }
+      copyResetRef.current = window.setTimeout(() => setCopyStatus("idle"), 2000);
     } catch (error) {
       console.error("Failed to copy share link:", error);
       setCopyStatus("error");

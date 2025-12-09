@@ -38,6 +38,10 @@ export const onRequest = async ({ request }: { request: Request }) => {
     : (parsed.lang === localeCodes.en
       ? `Lv.${parsed.level} build`
       : `Lv.${parsed.level} のパーク構成`);
+  const redirectText = parsed.lang === localeCodes.en
+    ? "Redirecting to the shared build..."
+    : "共有リンクにリダイレクトしています...";
+  const clickHereText = parsed.lang === localeCodes.en ? "Click here" : "こちら";
 
   const html = `<!doctype html>
 <html lang="${parsed.lang}">
@@ -54,7 +58,7 @@ export const onRequest = async ({ request }: { request: Request }) => {
   <meta http-equiv="refresh" content="0; url=${escapeHtml(appUrl)}" />
 </head>
 <body style="background:#0f172a; color:#e2e8f0; font-family: sans-serif;">
-  <p>共有リンクにリダイレクトしています... <a href="${escapeHtml(appUrl)}">こちら</a>をクリックしてください。</p>
+  <p>${escapeHtml(redirectText)} <a href="${escapeHtml(appUrl)}">${escapeHtml(clickHereText)}</a></p>
   <script>window.location.replace(${JSON.stringify(appUrl)});</script>
 </body>
 </html>`;
