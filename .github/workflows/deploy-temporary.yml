@@ -2,11 +2,6 @@ name: Deploy Temporary
 
 on:
   workflow_dispatch:
-    inputs:
-      branch:
-        description: 'Branch to deploy'
-        required: true
-        default: 'master'
 
 jobs:
   deploy:
@@ -18,8 +13,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ inputs.branch }}
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -42,5 +35,5 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name=slashco-vr-build-planner-temp --branch=${{ inputs.branch }}
+          command: pages deploy dist --project-name=slashco-vr-build-planner-temp --branch=${{ github.ref_name }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
