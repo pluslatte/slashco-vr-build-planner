@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams, sanitizePerkKeys } from "./share";
 import { localeCodes, PERK_KEY, type PerkKey } from "./perks";
 
-describe("share utilities", () => {
-  it("buildShareSearchParams sorts and clamps values", () => {
+describe("共有ユーティリティ", () => {
+  it("buildShareSearchParams は値をソートおよびクランプする", () => {
     const params = buildShareSearchParams({
       perks: [PERK_KEY.MECHANIC_3, PERK_KEY.MECHANIC, PERK_KEY.MECHANIC] as PerkKey[],
       level: 120,
@@ -15,7 +15,7 @@ describe("share utilities", () => {
     expect(params.get("lang")).toBe(localeCodes.en);
   });
 
-  it("buildShareSearchParams omits perks param when empty", () => {
+  it("buildShareSearchParams は空の場合 perks パラメータを省略する", () => {
     const params = buildShareSearchParams({
       perks: [],
       level: 30,
@@ -27,11 +27,11 @@ describe("share utilities", () => {
     expect(params.get("lang")).toBe(localeCodes.en);
   });
 
-  it("parseBuildFromSearchParams returns null when no share params are present", () => {
+  it("parseBuildFromSearchParams は共有パラメータが存在しない場合に null を返す", () => {
     expect(parseBuildFromSearchParams(new URLSearchParams())).toBeNull();
   });
 
-  it("parseBuildFromSearchParams filters invalid perks and applies defaults", () => {
+  it("parseBuildFromSearchParams は無効なパークをフィルタリングし、デフォルトを適用する", () => {
     const parsed = parseBuildFromSearchParams(new URLSearchParams({
       perks: "INVALID,HEALTHY,UNKNOWN",
       level: "-5",
@@ -43,7 +43,7 @@ describe("share utilities", () => {
     expect(parsed?.lang).toBe(localeCodes.ja);
   });
 
-  it("parseBuildFromSearchParams uses defaults when values are missing", () => {
+  it("parseBuildFromSearchParams は値が欠落している場合にデフォルトを使用する", () => {
     const parsed = parseBuildFromSearchParams(new URLSearchParams({
       perks: "",
     }));
@@ -53,7 +53,7 @@ describe("share utilities", () => {
     expect(parsed?.lang).toBe(localeCodes.ja);
   });
 
-  it("sanitizePerkKeys removes duplicates and invalid keys", () => {
+  it("sanitizePerkKeys は重複および無効なキーを削除する", () => {
     const result = sanitizePerkKeys(["MECHANIC", "INVALID", "MECHANIC", "HEALTHY"]);
     expect(result).toEqual([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]);
   });
