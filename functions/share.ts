@@ -14,7 +14,6 @@ export const onRequest = async ({ request }: { request: Request }) => {
   const params = buildShareSearchParams(parsed);
   const origin = `${url.protocol}//${url.host}`;
   const appUrl = `${origin}/?${params.toString()}`;
-  const imageUrl = `${origin}/api/og?${params.toString()}`;
 
   const perkNames = parsed.perks
     .map((key) => PERKS[key]?.name?.[parsed.lang])
@@ -40,10 +39,9 @@ export const onRequest = async ({ request }: { request: Request }) => {
   <title>${escapeHtml(title)}</title>
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
-  <meta property="og:image" content="${escapeHtml(imageUrl)}" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="${escapeHtml(url.toString())}" />
-  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:card" content="summary" />
   <meta http-equiv="refresh" content="0; url=${escapeHtml(appUrl)}" />
 </head>
 <body style="background:#0f172a; color:#e2e8f0; font-family: sans-serif;">
