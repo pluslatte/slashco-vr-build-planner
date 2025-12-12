@@ -4,54 +4,113 @@ import { localeCodes, PERK_KEY, type PerkKey } from "./perks";
 import { DEFAULT_LEVEL, MAX_LEVEL } from "./constants";
 
 describe("共有ユーティリティ", () => {
-  it("buildShareSearchParams は値をソートおよびクランプする", () => {
-    const params = buildShareSearchParams({
-      perks: [PERK_KEY.MECHANIC_3, PERK_KEY.MECHANIC, PERK_KEY.MECHANIC] as PerkKey[],
-      level: 120,
-      lang: localeCodes.en,
+  describe("コンパクトエンコーディング", () => {
+    it("buildShareSearchParams はコンパクトなbase64url形式を生成する", () => {
+      const params = buildShareSearchParams({
+        perks: [PERK_KEY.MECHANIC, PERK_KEY.HEALTHY],
+        level: 10,
+        lang: localeCodes.ja,
+      });
+
+      expect(params.has("b")).toBe(true);
+      expect(params.get("b")).toBeTruthy();
+      // コンパクト形式は短い（従来の形式より大幅に短い）
+      const compactLength = params.toString().length;
+      expect(compactLength).toBeLessThan(30);
     });
 
-    expect(params.get("perks")).toBe("MECHANIC,MECHANIC_3");
-    expect(params.get("level")).toBe(MAX_LEVEL.toString());
-    expect(params.get("lang")).toBe(localeCodes.en);
+    it("buildShareSearchParams と parseBuildFromSearchParams はラウンドトリップする", () => {
+      const original = {
+        perks: [PERK_KEY.MECHANIC_3, PERK_KEY.MECHANIC, PERK_KEY.HEALTHY] as PerkKey[],
+        level: 50,
+        lang: localeCodes.en,
+      };
+
+      const params = buildShareSearchParams(original);
+      const parsed = parseBuildFromSearchParams(params);
+
+      expect(parsed).not.toBeNull();
+      expect(parsed?.level).toBe(50);
+      expect(parsed?.lang).toBe(localeCodes.en);
+      // パークは順序が異なる可能性があるため、セットとして比較
+      expect(new Set(parsed?.perks)).toEqual(new Set([PERK_KEY.MECHANIC_3, PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]));
+    });
+
+    it("buildShareSearchParams は値をクランプする", () => {
+      const params = buildShareSearchParams({
+        perks: [PERK_KEY.MECHANIC],
+        level: 120,
+        lang: localeCodes.en,
+      });
+
+      const parsed = parseBuildFromSearchParams(params);
+      expect(parsed?.level).toBe(MAX_LEVEL);
+    });
+
+    it("buildShareSearchParams は重複したパークを処理する", () => {
+      const params = buildShareSearchParams({
+        perks: [PERK_KEY.MECHANIC, PERK_KEY.MECHANIC, PERK_KEY.HEALTHY] as PerkKey[],
+        level: 10,
+        lang: localeCodes.ja,
+      });
+
+      const parsed = parseBuildFromSearchParams(params);
+      expect(parsed?.perks.length).toBe(2);
+      expect(new Set(parsed?.perks)).toEqual(new Set([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]));
+    });
+
+    it("buildShareSearchParams は空のパークリストを処理する", () => {
+      const params = buildShareSearchParams({
+        perks: [],
+        level: DEFAULT_LEVEL,
+        lang: localeCodes.en,
+      });
+
+      const parsed = parseBuildFromSearchParams(params);
+      expect(parsed?.perks).toEqual([]);
+      expect(parsed?.level).toBe(DEFAULT_LEVEL);
+      expect(parsed?.lang).toBe(localeCodes.en);
+    });
   });
 
-  it("buildShareSearchParams は空の場合 perks パラメータを省略する", () => {
-    const params = buildShareSearchParams({
-      perks: [],
-      level: DEFAULT_LEVEL,
-      lang: localeCodes.en,
+  describe("後方互換性", () => {
+    it("parseBuildFromSearchParams は従来のフォーマットをサポートする", () => {
+      const parsed = parseBuildFromSearchParams(new URLSearchParams({
+        perks: "MECHANIC,HEALTHY",
+        level: "10",
+        lang: "ja",
+      }));
+
+      expect(parsed?.perks).toEqual([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]);
+      expect(parsed?.level).toBe(10);
+      expect(parsed?.lang).toBe(localeCodes.ja);
     });
 
-    expect(params.has("perks")).toBe(false);
-    expect(params.get("level")).toBe(DEFAULT_LEVEL.toString());
-    expect(params.get("lang")).toBe(localeCodes.en);
+    it("parseBuildFromSearchParams は無効なパークをフィルタリングし、デフォルトを適用する", () => {
+      const parsed = parseBuildFromSearchParams(new URLSearchParams({
+        perks: "INVALID,HEALTHY,UNKNOWN",
+        level: "-5",
+        lang: "unknown",
+      }));
+
+      expect(parsed?.perks).toEqual([PERK_KEY.HEALTHY]);
+      expect(parsed?.level).toBe(0);
+      expect(parsed?.lang).toBe(localeCodes.ja);
+    });
+
+    it("parseBuildFromSearchParams は値が欠落している場合にデフォルトを使用する", () => {
+      const parsed = parseBuildFromSearchParams(new URLSearchParams({
+        perks: "",
+      }));
+
+      expect(parsed?.perks).toEqual([]);
+      expect(parsed?.level).toBe(DEFAULT_LEVEL);
+      expect(parsed?.lang).toBe(localeCodes.ja);
+    });
   });
 
   it("parseBuildFromSearchParams は共有パラメータが存在しない場合に null を返す", () => {
     expect(parseBuildFromSearchParams(new URLSearchParams())).toBeNull();
-  });
-
-  it("parseBuildFromSearchParams は無効なパークをフィルタリングし、デフォルトを適用する", () => {
-    const parsed = parseBuildFromSearchParams(new URLSearchParams({
-      perks: "INVALID,HEALTHY,UNKNOWN",
-      level: "-5",
-      lang: "unknown",
-    }));
-
-    expect(parsed?.perks).toEqual([PERK_KEY.HEALTHY]);
-    expect(parsed?.level).toBe(0);
-    expect(parsed?.lang).toBe(localeCodes.ja);
-  });
-
-  it("parseBuildFromSearchParams は値が欠落している場合にデフォルトを使用する", () => {
-    const parsed = parseBuildFromSearchParams(new URLSearchParams({
-      perks: "",
-    }));
-
-    expect(parsed?.perks).toEqual([]);
-    expect(parsed?.level).toBe(DEFAULT_LEVEL);
-    expect(parsed?.lang).toBe(localeCodes.ja);
   });
 
   it("sanitizePerkKeys は重複および無効なキーを削除する", () => {
