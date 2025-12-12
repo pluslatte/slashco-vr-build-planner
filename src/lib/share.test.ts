@@ -73,44 +73,13 @@ describe("共有ユーティリティ", () => {
     });
   });
 
-  describe("後方互換性", () => {
-    it("parseBuildFromSearchParams は従来のフォーマットをサポートする", () => {
-      const parsed = parseBuildFromSearchParams(new URLSearchParams({
-        perks: "MECHANIC,HEALTHY",
-        level: "10",
-        lang: "ja",
-      }));
-
-      expect(parsed?.perks).toEqual([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]);
-      expect(parsed?.level).toBe(10);
-      expect(parsed?.lang).toBe(localeCodes.ja);
-    });
-
-    it("parseBuildFromSearchParams は無効なパークをフィルタリングし、デフォルトを適用する", () => {
-      const parsed = parseBuildFromSearchParams(new URLSearchParams({
-        perks: "INVALID,HEALTHY,UNKNOWN",
-        level: "-5",
-        lang: "unknown",
-      }));
-
-      expect(parsed?.perks).toEqual([PERK_KEY.HEALTHY]);
-      expect(parsed?.level).toBe(0);
-      expect(parsed?.lang).toBe(localeCodes.ja);
-    });
-
-    it("parseBuildFromSearchParams は値が欠落している場合にデフォルトを使用する", () => {
-      const parsed = parseBuildFromSearchParams(new URLSearchParams({
-        perks: "",
-      }));
-
-      expect(parsed?.perks).toEqual([]);
-      expect(parsed?.level).toBe(DEFAULT_LEVEL);
-      expect(parsed?.lang).toBe(localeCodes.ja);
-    });
-  });
-
   it("parseBuildFromSearchParams は共有パラメータが存在しない場合に null を返す", () => {
     expect(parseBuildFromSearchParams(new URLSearchParams())).toBeNull();
+  });
+
+  it("parseBuildFromSearchParams は無効なbase64urlの場合に null を返す", () => {
+    const parsed = parseBuildFromSearchParams(new URLSearchParams({ b: "invalid!!!" }));
+    expect(parsed).toBeNull();
   });
 
   it("sanitizePerkKeys は重複および無効なキーを削除する", () => {

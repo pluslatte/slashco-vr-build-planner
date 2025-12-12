@@ -1,5 +1,5 @@
-import { DEFAULT_LEVEL, MAX_LEVEL, MIN_LEVEL } from "./constants";
-import { isLocale, isPerkKey, localeCodes, PERK_KEY, type Locale, type PerkKey } from "./perks";
+import { MAX_LEVEL, MIN_LEVEL } from "./constants";
+import { isPerkKey, localeCodes, PERK_KEY, type Locale, type PerkKey } from "./perks";
 
 export interface SharedBuild {
   perks: PerkKey[];
@@ -169,30 +169,12 @@ const base64UrlToBytes = (base64url: string): Uint8Array => {
 };
 
 export const parseBuildFromSearchParams = (params: URLSearchParams): SharedBuild | null => {
-  // Try compact format first (new format)
   const compactParam = params.get("b");
-  if (compactParam) {
-    const decoded = decodeBuildCompact(compactParam);
-    if (decoded) {
-      return decoded;
-    }
-  }
-
-  // Fall back to legacy format for backward compatibility
-  const hasAnyShareParam = ["perks", "level", "lang"].some((key) => params.has(key));
-  if (!hasAnyShareParam) {
+  if (!compactParam) {
     return null;
   }
 
-  const perksParam = params.get("perks");
-  const levelParam = params.get("level");
-  const langParam = params.get("lang");
-
-  const perks = perksParam ? sanitizePerkKeys(perksParam.split(",")) : [];
-  const level = clampLevel(levelParam ? parseInt(levelParam, 10) : DEFAULT_LEVEL);
-  const lang = isLocale(langParam) ? langParam : localeCodes.ja;
-
-  return { perks, level, lang };
+  return decodeBuildCompact(compactParam);
 };
 
 export const buildShareSearchParams = (build: SharedBuild) => {
