@@ -86,4 +86,19 @@ describe("共有ユーティリティ", () => {
     const result = sanitizePerkKeys(["MECHANIC", "INVALID", "MECHANIC", "HEALTHY"]);
     expect(result).toEqual([PERK_KEY.MECHANIC, PERK_KEY.HEALTHY]);
   });
+
+  it("parseBuildFromSearchParams はサポートされていないバージョンの場合に null を返す", () => {
+    // バージョン2 (未サポート) をシミュレート
+    const bytes = new Uint8Array([2, 0, 0, 0, 0, 0, 1, 0]);
+    const base64 = btoa(String.fromCharCode(...bytes))
+      .replace(/\+/g, '-')
+      .replace(/\//g, '_')
+      .replace(/=/g, '');
+
+    const params = new URLSearchParams();
+    params.set("b", base64);
+
+    const parsed = parseBuildFromSearchParams(params);
+    expect(parsed).toBeNull();
+  });
 });

@@ -1,4 +1,4 @@
-import { MAX_LEVEL, MIN_LEVEL } from "./constants";
+import { MAX_LEVEL, MIN_LEVEL, SHARED_LINK_VERSION } from "./constants";
 import { isPerkKey, localeCodes, type Locale, type PerkKey } from "./perks";
 
 export interface SharedBuild {
@@ -81,7 +81,7 @@ export const sanitizePerkKeys = (keys: Iterable<string>): PerkKey[] => {
 
 /**
  * Encodes a build configuration into a compact base64url string
- * Format: N bytes for perks bitmap + 1 byte for level + 1 byte for language
+ * Format: [Version: 1 byte] [Perks Bitmap: N bytes] [Level: 1 byte] [Lang: 1 byte]
  */
 const encodeBuildCompact = (build: SharedBuild): string => {
   const sanitizedPerks = sanitizePerkKeys(build.perks);
@@ -102,11 +102,12 @@ const encodeBuildCompact = (build: SharedBuild): string => {
   const level = clampLevel(build.level);
   const langBit = build.lang === localeCodes.en ? 1 : 0;
 
-  // Pack into N+2 bytes: N for perks + 1 for level + 1 for lang
-  const bytes = new Uint8Array(bitmapBytes + 2);
-  bytes.set(perkBitmap, 0);
-  bytes[bitmapBytes] = level;
-  bytes[bitmapBytes + 1] = langBit;
+  // Pack into 1 + N + 2 bytes: 1 for version + N for perks + 1 for level + 1 for lang
+  const bytes = new Uint8Array(1 + bitmapBytes + 2);
+  bytes[0] = SHARED_LINK_VERSION;
+  bytes.set(perkBitmap, 1);
+  bytes[1 + bitmapBytes] = level;
+  bytes[1 + bitmapBytes + 1] = langBit;
 
   // Convert to base64url
   return bytesToBase64Url(bytes);
@@ -118,11 +119,17 @@ const encodeBuildCompact = (build: SharedBuild): string => {
 const decodeBuildCompact = (encoded: string): SharedBuild | null => {
   try {
     const bytes = base64UrlToBytes(encoded);
-    if (bytes.length < 2) {
+    if (bytes.length < 3) {
       return null;
     }
 
-    const bitmapBytes = bytes.length - 2;
+    const version = bytes[0];
+    if (version !== SHARED_LINK_VERSION) {
+      console.warn(`Unsupported build version: ${version}`);
+      return null;
+    }
+
+    const bitmapBytes = bytes.length - 3;
 
     // Extract perks from bitmap
     const perks: PerkKey[] = [];
@@ -132,7 +139,7 @@ const decodeBuildCompact = (encoded: string): SharedBuild | null => {
 
       // Check if we have data for this bit
       if (byteIndex < bitmapBytes) {
-        if (bytes[byteIndex] & (1 << bitIndex)) {
+        if (bytes[1 + byteIndex] & (1 << bitIndex)) {
           const perk = PERK_ORDER[i];
           if (perk && isPerkKey(perk)) {
             perks.push(perk);
@@ -142,8 +149,8 @@ const decodeBuildCompact = (encoded: string): SharedBuild | null => {
     }
 
     // Extract level and language
-    const level = clampLevel(bytes[bitmapBytes]);
-    const lang = bytes[bitmapBytes + 1] === 1 ? localeCodes.en : localeCodes.ja;
+    const level = clampLevel(bytes[1 + bitmapBytes]);
+    const lang = bytes[1 + bitmapBytes + 1] === 1 ? localeCodes.en : localeCodes.ja;
 
     return { perks, level, lang };
   } catch (error) {
