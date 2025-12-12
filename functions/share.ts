@@ -1,6 +1,7 @@
-import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams } from "../src/lib/share";
+import { buildShareSearchParams, parseBuildFromSearchParams } from "../src/lib/share";
 import { PERKS } from "../src/lib/perkData";
 import { localeCodes } from "../src/lib/perks";
+import { DEFAULT_LEVEL } from "../src/lib/constants";
 import { escapeHtml } from "./utils/escape";
 
 export const onRequest = async ({ request }: { request: Request }) => {
