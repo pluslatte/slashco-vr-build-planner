@@ -1,8 +1,12 @@
+
 export const localeCodes = {
   ja: 'ja',
   en: 'en',
 } as const;
 export type Locale = keyof typeof localeCodes;
+export const isLocale = (value: string | null): value is Locale =>
+  Object.values(localeCodes).some((locale) => locale === value);
+
 export type LocalizedText = Record<Locale, string>;
 
 export interface Perk {
@@ -66,3 +70,6 @@ export const PERK_KEY = {
 } as const;
 
 export type PerkKey = keyof typeof PERK_KEY;
+
+const PERK_KEYS_SET = new Set(Object.values(PERK_KEY));
+export const isPerkKey = (value: string): value is PerkKey => PERK_KEYS_SET.has(value as PerkKey);
