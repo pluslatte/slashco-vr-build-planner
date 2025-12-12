@@ -1,5 +1,5 @@
 import { MAX_LEVEL, MIN_LEVEL } from "./constants";
-import { isPerkKey, localeCodes, PERK_KEY, type Locale, type PerkKey } from "./perks";
+import { isPerkKey, localeCodes, type Locale, type PerkKey } from "./perks";
 
 export interface SharedBuild {
   perks: PerkKey[];
@@ -8,43 +8,46 @@ export interface SharedBuild {
 }
 
 // Ordered list of perk keys for bitmap encoding (must remain stable)
-const PERK_ORDER: PerkKey[] = [
-  PERK_KEY.MECHANIC,
-  PERK_KEY.HEALTHY,
-  PERK_KEY.ADRENALINE_RUSH,
-  PERK_KEY.HYPERPERCEPTIVE,
-  PERK_KEY.UNCLE_SINK,
-  PERK_KEY.PANIC_SENSE,
-  PERK_KEY.MECHANIC_2,
-  PERK_KEY.BOUNTY_HUNTER,
-  PERK_KEY.MCNALLY_HANDS,
-  PERK_KEY.SPEED_ADDICT,
-  PERK_KEY.SHADOWBORN,
-  PERK_KEY.MUKBANG_CHAMPION,
-  PERK_KEY.MERCHANT,
-  PERK_KEY.LIGHTFOOT,
-  PERK_KEY.HEALTHY_2,
-  PERK_KEY.HEAVY,
-  PERK_KEY.CLOSE_ENCOUNTER,
-  PERK_KEY.FIRST_RESPONDER,
-  PERK_KEY.MECHANIC_3,
-  PERK_KEY.LIGHTFOOT_2,
-  PERK_KEY.BATTER_UP,
-  PERK_KEY.GLUTTON,
-  PERK_KEY.ACCOUNTANT,
-  PERK_KEY.DEITY_SWINDLER,
-  PERK_KEY.STEALTH_CAMO,
-  PERK_KEY.RABBIT_FEET,
-  PERK_KEY.ATHLETE,
-  PERK_KEY.EXTERMINATOR_FLASHLIGHT,
-  PERK_KEY.ALIVE_HARD,
-  PERK_KEY.SCAPEGOAT,
-  PERK_KEY.GROUCH_BEHAVIOR,
-  PERK_KEY.EXTREMELY_BUFF,
-  PERK_KEY.BALKAN_WARRIOR,
-  PERK_KEY.LEAD_BELLY,
-  PERK_KEY.SOLID_JOHN,
-  PERK_KEY.FREAKY_DOCTOR,
+// - New perks: Add to the end
+// - Deleted perks: Do NOT remove from this list (to maintain index stability)
+// - Replaced perks: Keep the old ID here, add the new ID to the end
+const PERK_ORDER: readonly string[] = [
+  "MECHANIC",
+  "HEALTHY",
+  "ADRENALINE_RUSH",
+  "HYPERPERCEPTIVE",
+  "UNCLE_SINK",
+  "PANIC_SENSE",
+  "MECHANIC_2",
+  "BOUNTY_HUNTER",
+  "MCNALLY_HANDS",
+  "SPEED_ADDICT",
+  "SHADOWBORN",
+  "MUKBANG_CHAMPION",
+  "MERCHANT",
+  "LIGHTFOOT",
+  "HEALTHY_2",
+  "HEAVY",
+  "CLOSE_ENCOUNTER",
+  "FIRST_RESPONDER",
+  "MECHANIC_3",
+  "LIGHTFOOT_2",
+  "BATTER_UP",
+  "GLUTTON",
+  "ACCOUNTANT",
+  "DEITY_SWINDLER",
+  "STEALTH_CAMO",
+  "RABBIT_FEET",
+  "ATHLETE",
+  "EXTERMINATOR_FLASHLIGHT",
+  "ALIVE_HARD",
+  "SCAPEGOAT",
+  "GROUCH_BEHAVIOR",
+  "EXTREMELY_BUFF",
+  "BALKAN_WARRIOR",
+  "LEAD_BELLY",
+  "SOLID_JOHN",
+  "FREAKY_DOCTOR",
 ];
 
 const PERK_INDEX_MAP = new Map(PERK_ORDER.map((key, index) => [key, index]));
@@ -78,13 +81,14 @@ export const sanitizePerkKeys = (keys: Iterable<string>): PerkKey[] => {
 
 /**
  * Encodes a build configuration into a compact base64url string
- * Format: 5 bytes for perks bitmap + 1 byte for level + 1 byte for language
+ * Format: N bytes for perks bitmap + 1 byte for level + 1 byte for language
  */
 const encodeBuildCompact = (build: SharedBuild): string => {
   const sanitizedPerks = sanitizePerkKeys(build.perks);
-  
-  // Create a bitmap for perks (36 perks = 5 bytes)
-  const perkBitmap = new Uint8Array(5);
+
+  // Create a bitmap for perks
+  const bitmapBytes = Math.ceil(PERK_ORDER.length / 8);
+  const perkBitmap = new Uint8Array(bitmapBytes);
   for (const perk of sanitizedPerks) {
     const index = PERK_INDEX_MAP.get(perk);
     if (index !== undefined) {
@@ -93,17 +97,17 @@ const encodeBuildCompact = (build: SharedBuild): string => {
       perkBitmap[byteIndex] |= 1 << bitIndex;
     }
   }
-  
+
   // Encode level (1 byte) and language (1 byte)
   const level = clampLevel(build.level);
   const langBit = build.lang === localeCodes.en ? 1 : 0;
-  
-  // Pack into 7 bytes: 5 for perks + 1 for level + 1 for lang
-  const bytes = new Uint8Array(7);
+
+  // Pack into N+2 bytes: N for perks + 1 for level + 1 for lang
+  const bytes = new Uint8Array(bitmapBytes + 2);
   bytes.set(perkBitmap, 0);
-  bytes[5] = level;
-  bytes[6] = langBit;
-  
+  bytes[bitmapBytes] = level;
+  bytes[bitmapBytes + 1] = langBit;
+
   // Convert to base64url
   return bytesToBase64Url(bytes);
 };
@@ -114,27 +118,33 @@ const encodeBuildCompact = (build: SharedBuild): string => {
 const decodeBuildCompact = (encoded: string): SharedBuild | null => {
   try {
     const bytes = base64UrlToBytes(encoded);
-    if (bytes.length !== 7) {
+    if (bytes.length < 2) {
       return null;
     }
-    
-    // Extract perks from bitmap (36 perks across 5 bytes)
+
+    const bitmapBytes = bytes.length - 2;
+
+    // Extract perks from bitmap
     const perks: PerkKey[] = [];
     for (let i = 0; i < PERK_ORDER.length; i++) {
       const byteIndex = Math.floor(i / 8);
       const bitIndex = i % 8;
-      if (bytes[byteIndex] & (1 << bitIndex)) {
-        const perk = PERK_ORDER[i];
-        if (perk) {
-          perks.push(perk);
+
+      // Check if we have data for this bit
+      if (byteIndex < bitmapBytes) {
+        if (bytes[byteIndex] & (1 << bitIndex)) {
+          const perk = PERK_ORDER[i];
+          if (perk && isPerkKey(perk)) {
+            perks.push(perk);
+          }
         }
       }
     }
-    
+
     // Extract level and language
-    const level = clampLevel(bytes[5]);
-    const lang = bytes[6] === 1 ? localeCodes.en : localeCodes.ja;
-    
+    const level = clampLevel(bytes[bitmapBytes]);
+    const lang = bytes[bitmapBytes + 1] === 1 ? localeCodes.en : localeCodes.ja;
+
     return { perks, level, lang };
   } catch (error) {
     console.error("Failed to decode compact build:", error);
@@ -179,7 +189,7 @@ export const parseBuildFromSearchParams = (params: URLSearchParams): SharedBuild
 
 export const buildShareSearchParams = (build: SharedBuild) => {
   const params = new URLSearchParams();
-  
+
   // Use compact encoding format
   const compactEncoded = encodeBuildCompact(build);
   params.set("b", compactEncoded);
