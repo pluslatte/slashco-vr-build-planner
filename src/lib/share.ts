@@ -1,3 +1,4 @@
+import { DEFAULT_LEVEL, MAX_LEVEL, MIN_LEVEL } from "./constants";
 import { isLocale, isPerkKey, localeCodes, type Locale, type PerkKey } from "./perks";
 
 export interface SharedBuild {
@@ -5,9 +6,6 @@ export interface SharedBuild {
   level: number;
   lang: Locale;
 }
-
-export const DEFAULT_LEVEL = 30;
-const MAX_LEVEL = 100;
 
 export const getBuildFromCurrentUrl = () => {
   try {
@@ -20,7 +18,7 @@ export const getBuildFromCurrentUrl = () => {
 };
 
 const clampLevel = (level: number) =>
-  Math.min(Math.max(0, Number.isFinite(level) ? Math.trunc(level) : 0), MAX_LEVEL);
+  Math.min(Math.max(MIN_LEVEL, Number.isFinite(level) ? Math.trunc(level) : MIN_LEVEL), MAX_LEVEL);
 
 export const sanitizePerkKeys = (keys: Iterable<string>): PerkKey[] => {
   const seen = new Set<PerkKey>();

@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { buildShareSearchParams, DEFAULT_LEVEL, parseBuildFromSearchParams, sanitizePerkKeys } from "./share";
+import { buildShareSearchParams, parseBuildFromSearchParams, sanitizePerkKeys } from "./share";
 import { localeCodes, PERK_KEY, type PerkKey } from "./perks";
+import { DEFAULT_LEVEL, MAX_LEVEL } from "./constants";
 
 describe("共有ユーティリティ", () => {
   it("buildShareSearchParams は値をソートおよびクランプする", () => {
@@ -11,19 +12,19 @@ describe("共有ユーティリティ", () => {
     });
 
     expect(params.get("perks")).toBe("MECHANIC,MECHANIC_3");
-    expect(params.get("level")).toBe("100");
+    expect(params.get("level")).toBe(MAX_LEVEL.toString());
     expect(params.get("lang")).toBe(localeCodes.en);
   });
 
   it("buildShareSearchParams は空の場合 perks パラメータを省略する", () => {
     const params = buildShareSearchParams({
       perks: [],
-      level: 30,
+      level: DEFAULT_LEVEL,
       lang: localeCodes.en,
     });
 
     expect(params.has("perks")).toBe(false);
-    expect(params.get("level")).toBe("30");
+    expect(params.get("level")).toBe(DEFAULT_LEVEL.toString());
     expect(params.get("lang")).toBe(localeCodes.en);
   });
 

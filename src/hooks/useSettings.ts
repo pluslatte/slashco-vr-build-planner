@@ -1,6 +1,7 @@
 import { localeCodes, type Locale } from "@/lib/perks";
 import { useState, useEffect } from "react";
-import { DEFAULT_LEVEL, getBuildFromCurrentUrl } from "@/lib/share";
+import { getBuildFromCurrentUrl } from "@/lib/share";
+import { DEFAULT_LEVEL } from "@/lib/constants";
 
 const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
 

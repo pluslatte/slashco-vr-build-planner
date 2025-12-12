@@ -1,4 +1,5 @@
 import { Field, NumberInput } from "@chakra-ui/react";
+import { MAX_LEVEL, MIN_LEVEL } from "../lib/constants";
 
 interface Props {
   level: number;
@@ -11,14 +12,14 @@ const LevelSelector = (props: Props) => (
     <NumberInput.Root
       value={props.level.toString()}
       width="100px"
-      min={0}
-      max={100}
+      min={MIN_LEVEL}
+      max={MAX_LEVEL}
       onValueChange={(e) => {
         const num = parseInt(e.value);
         if (!isNaN(num)) {
           props.setLevel(num)
         } else {
-          props.setLevel(0)
+          props.setLevel(MIN_LEVEL)
         }
       }}
     >
