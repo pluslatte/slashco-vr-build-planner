@@ -78,13 +78,13 @@ export const sanitizePerkKeys = (keys: Iterable<string>): PerkKey[] => {
 
 /**
  * Encodes a build configuration into a compact base64url string
- * Format: 4 bytes for perks bitmap + 1 byte for level + language bit in last byte
+ * Format: 5 bytes for perks bitmap + 1 byte for level + 1 byte for language
  */
 const encodeBuildCompact = (build: SharedBuild): string => {
   const sanitizedPerks = sanitizePerkKeys(build.perks);
   
-  // Create a bitmap for perks (32 perks = 4 bytes)
-  const perkBitmap = new Uint8Array(4);
+  // Create a bitmap for perks (36 perks = 5 bytes)
+  const perkBitmap = new Uint8Array(5);
   for (const perk of sanitizedPerks) {
     const index = PERK_INDEX_MAP.get(perk);
     if (index !== undefined) {
@@ -94,15 +94,15 @@ const encodeBuildCompact = (build: SharedBuild): string => {
     }
   }
   
-  // Encode level (1 byte) and language (1 bit in the 6th byte)
+  // Encode level (1 byte) and language (1 byte)
   const level = clampLevel(build.level);
   const langBit = build.lang === localeCodes.en ? 1 : 0;
   
-  // Pack into 6 bytes: 4 for perks + 1 for level + 1 for lang
-  const bytes = new Uint8Array(6);
+  // Pack into 7 bytes: 5 for perks + 1 for level + 1 for lang
+  const bytes = new Uint8Array(7);
   bytes.set(perkBitmap, 0);
-  bytes[4] = level;
-  bytes[5] = langBit;
+  bytes[5] = level;
+  bytes[6] = langBit;
   
   // Convert to base64url
   return bytesToBase64Url(bytes);
@@ -114,13 +114,13 @@ const encodeBuildCompact = (build: SharedBuild): string => {
 const decodeBuildCompact = (encoded: string): SharedBuild | null => {
   try {
     const bytes = base64UrlToBytes(encoded);
-    if (bytes.length !== 6) {
+    if (bytes.length !== 7) {
       return null;
     }
     
-    // Extract perks from bitmap
+    // Extract perks from bitmap (36 perks across 5 bytes)
     const perks: PerkKey[] = [];
-    for (let i = 0; i < 32; i++) {
+    for (let i = 0; i < PERK_ORDER.length; i++) {
       const byteIndex = Math.floor(i / 8);
       const bitIndex = i % 8;
       if (bytes[byteIndex] & (1 << bitIndex)) {
@@ -132,8 +132,8 @@ const decodeBuildCompact = (encoded: string): SharedBuild | null => {
     }
     
     // Extract level and language
-    const level = clampLevel(bytes[4]);
-    const lang = bytes[5] === 1 ? localeCodes.en : localeCodes.ja;
+    const level = clampLevel(bytes[5]);
+    const lang = bytes[6] === 1 ? localeCodes.en : localeCodes.ja;
     
     return { perks, level, lang };
   } catch (error) {
