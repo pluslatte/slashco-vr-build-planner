@@ -5,13 +5,15 @@ import { PERKS } from "./lib/perkData";
 import PerkDetailList from "./components/PerkDetailList/PerkDetailList";
 import { usePerkSelector } from "./hooks/usePerkSelector";
 import { useSettings } from "./hooks/useSettings";
+import { useShareLink } from "./hooks/useShareLink";
 import LevelSelector from "./components/LevelSelector";
-import { LuExternalLink } from "react-icons/lu";
+import { LuExternalLink, LuShare } from "react-icons/lu";
 import { localeCodes } from "./lib/perks";
 
 const App = () => {
   const { selectedKeys, onTogglePerk } = usePerkSelector();
   const { level, setLevel, lang, setLang } = useSettings();
+  const { copyStatus, shareStatusMessage, handleCopyShare } = useShareLink({ selectedKeys, level, lang });
 
   const ppUsed = selectedKeys.reduce((total, key) => total + PERKS[key].pp, 0);
   const maxPp = Math.min(Math.floor(level / 2), 15);
@@ -46,6 +48,28 @@ const App = () => {
           />
           <Box h={4} />
           <PpGauge ppUsed={ppUsed} maxPp={maxPp} />
+          <Box h={4} />
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={handleCopyShare}
+            aria-label={
+              copyStatus === "copied"
+                ? (lang === localeCodes.en ? "Link copied" : "リンクをコピーしました")
+                : undefined
+            }
+          >
+            <Box as={LuShare} aria-hidden="true" display="inline" mr={2} />
+            {lang === localeCodes.en ? "Copy share link" : "共有リンクをコピー"}
+          </Button>
+          <Text
+            mt={1}
+            fontSize="sm"
+            color={copyStatus === "error" ? "red.300" : "gray.400"}
+            aria-live="polite"
+          >
+            {shareStatusMessage}
+          </Text>
           <Box h={4} />
           <Link pr={2} color="gray.500" href="https://virtualkemomimi.net/@pluslatte" target="_blank" rel="noopener noreferrer">連絡先: pluslatte<LuExternalLink /></Link>
           <Text color="gray.500">パーク画像は以下のサイトより。翻訳は不正確かもしれません。</Text>

@@ -1,23 +1,33 @@
 import { localeCodes, type Locale } from "@/lib/perks";
 import { useState, useEffect } from "react";
+import { getBuildFromCurrentUrl } from "@/lib/share";
+import { DEFAULT_LEVEL } from "@/lib/constants";
 
 const SETTINGS_STORAGE_KEY = "slashco-vr-settings";
 
 export const useSettings = () => {
+    const urlBuild = getBuildFromCurrentUrl();
+
     const [level, setLevel] = useState<number>(() => {
+        if (urlBuild) {
+            return urlBuild.level;
+        }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
             if (stored) {
                 const parsed = JSON.parse(stored);
-                return parsed.level || 30;
+                return parsed.level || DEFAULT_LEVEL;
             }
         } catch (error) {
             console.error("Failed to load settings from localStorage:", error);
         }
-        return 30;
+        return DEFAULT_LEVEL;
     });
 
     const [lang, setLang] = useState<Locale>(() => {
+        if (urlBuild) {
+            return urlBuild.lang;
+        }
         try {
             const stored = localStorage.getItem(SETTINGS_STORAGE_KEY);
             if (stored) {
